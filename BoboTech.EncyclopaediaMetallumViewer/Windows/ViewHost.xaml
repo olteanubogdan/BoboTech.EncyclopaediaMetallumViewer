@@ -16,5 +16,5 @@
         <dxmvvm:MessageBoxService/>
         <services:HostService/>
     </dxmvvm:Interaction.Behaviors>
-    <ContentPresenter Content="{Binding}"/>
+    <ContentPresenter Content="{Binding}" Margin="0,10,0,0"/><!--set a 10px upper margin to accomodate the UI Debugging tools-->
 </Window>

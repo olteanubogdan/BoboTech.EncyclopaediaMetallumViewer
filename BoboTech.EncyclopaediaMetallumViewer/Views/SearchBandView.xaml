@@ -4,9 +4,11 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+             xmlns:fragments="clr-namespace:BoboTech.EncyclopaediaMetallumViewer.Fragments"
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
+        <!--#region row and column definitions-->
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition/>
@@ -18,11 +20,15 @@
             <RowDefinition/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
+        <!--#endregion-->
+        <!--#region search-->
         <TextBlock VerticalAlignment="Center" Margin="3" Text="Band name:"/>
         <TextBox VerticalAlignment="Center" Margin="3" Grid.Column="1" Text="{Binding BandNameToSearch}"/>
-        <Button VerticalAlignment="Center" Margin="3" Grid.Column="2" Command="{Binding SearchBandCommand}">
+        <Button VerticalAlignment="Center" Margin="3" Grid.Column="2" Command="{Binding SearchBandAsyncCommand, IsAsync=True}">
             <TextBlock Margin="10,0,10,0">Search</TextBlock>
         </Button>
+        <!--#endregion-->
+        <!--#region search status-->
         <Grid Grid.Row="1" Grid.ColumnSpan="3">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
@@ -39,19 +45,18 @@
             <TextBlock Grid.Column="2" Text="Code:" Margin="3"/>
             <TextBlock Grid.Column="3" Text="{Binding SearchCode}" Margin="3"/>
             <TextBlock Grid.Row="1" Text="Message:" Margin="3"/>
-            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding SearchMessage}" Margin="3"/>
+            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding SearchMessage}" Margin="3" TextWrapping="Wrap"/>
             <TextBlock Grid.Row="1" Grid.Column="2" Text="Hash:" Margin="3"/>
             <TextBlock Grid.Row="1" Grid.Column="3" Text="{Binding SearchHash}" Margin="3"/>
         </Grid>
+        <!--#endregion-->
+        <!--#region search results-->
         <ListView Grid.Row="2" Grid.ColumnSpan="3" Margin="3" ItemsSource="{Binding Bands}" SelectedItem="{Binding SelectedBand}" Style="{StaticResource ListViewStretchItem}">
             <dxmvvm:Interaction.Behaviors>
                 <dxmvvm:EventToCommand EventName="MouseDoubleClick" Command="{Binding ViewBandCommand}"/>
             </dxmvvm:Interaction.Behaviors>
         </ListView>
-        <TextBlock Grid.Row="3" Grid.ColumnSpan="3" Margin="3">
-            <Hyperlink Command="{Binding OpenDonationUrlCommand}">
-                <TextBlock Text="{Binding DonationMessage}"/>
-            </Hyperlink>
-        </TextBlock>
+        <!--#endregion-->
+        <fragments:Footer Grid.Row="3" Grid.ColumnSpan="3"/>
     </Grid>
 </UserControl>

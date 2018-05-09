@@ -44,9 +44,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Api\Album.cs" />
     <Compile Include="Api\Band.cs" />
+    <Compile Include="Api\BandDetails.cs" />
     <Compile Include="Api\Donation.cs" />
-    <Compile Include="Api\SearchBand.cs" />
+    <Compile Include="Api\GetBandData.cs" />
+    <Compile Include="Api\GetBandResponse.cs" />
+    <Compile Include="Api\Member.cs" />
+    <Compile Include="Api\SearchBandResponse.cs" />
     <Compile Include="Api\SearchBandData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

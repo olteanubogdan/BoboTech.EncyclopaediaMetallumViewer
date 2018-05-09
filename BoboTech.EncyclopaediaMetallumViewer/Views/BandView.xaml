@@ -3,8 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:fragments="clr-namespace:BoboTech.EncyclopaediaMetallumViewer.Fragments"
+             xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">
+    <dxmvvm:Interaction.Behaviors>
+        <dxmvvm:EventToCommand EventName="Loaded" Command="{Binding ViewLoadedAsyncCommand}"/>
+    </dxmvvm:Interaction.Behaviors>
     <Grid>
         <!--#region row and column definitions-->
         <Grid.RowDefinitions>
@@ -34,12 +39,6 @@
         <TextBlock Grid.Row="1" Grid.Column="3" Text="{Binding Country}" Margin="3"/>
         <!--#endregion-->
         <!--#endregion-->
-        <!--#region buttons - TODO: generate buttons in ViewHost-->
-        <StackPanel Grid.Row="3" Grid.ColumnSpan="4" Orientation="Horizontal">
-            <Button Command="{Binding GoBackCommand}" Margin="3">
-                <TextBlock Margin="10,0,10,0" Text="Back"/>
-            </Button>
-        </StackPanel>
-        <!--#endregion-->
+        <fragments:Footer Grid.Row="3" Grid.ColumnSpan="4"/>
     </Grid>
 </UserControl>

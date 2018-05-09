@@ -79,6 +79,8 @@ namespace BoboTech.EncyclopaediaMetallumViewer.UILogic.ViewModels
             }
         }
 
+        public override string ToString() => Invariant($"{nameof(StartupViewModel)} ({_instanceId:N}): {nameof(State)} - {State}, {nameof(Progress)} - {Progress:n}");
+
         #endregion
     }
 }

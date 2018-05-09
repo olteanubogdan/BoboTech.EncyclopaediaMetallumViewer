@@ -2,10 +2,14 @@
 {
     public interface IHostService
     {
-        object DataContext { get; set; }
-
         void Close();
 
         void ShowInitialView();
+
+        void ShowView(object viewModel);
+
+        void GoBack();
+
+        bool CanGoBack();
     }
 }

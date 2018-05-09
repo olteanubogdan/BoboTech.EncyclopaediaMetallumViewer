@@ -14,7 +14,7 @@
     <!--#endregion-->
     <!--#region Fragments-->
     <DataTemplate DataType="{x:Type apiModels:Band}">
-        <fragments:BandView/>
+        <fragments:Band/>
     </DataTemplate>
     <!--#endregion-->
 </ResourceDictionary>

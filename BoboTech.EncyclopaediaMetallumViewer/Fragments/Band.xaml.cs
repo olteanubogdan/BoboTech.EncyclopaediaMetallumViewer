@@ -2,9 +2,9 @@
 
 namespace BoboTech.EncyclopaediaMetallumViewer.Fragments
 {
-    public partial class BandView : UserControl
+    public partial class Band : UserControl
     {
-        public BandView()
+        public Band()
         {
             InitializeComponent();
         }

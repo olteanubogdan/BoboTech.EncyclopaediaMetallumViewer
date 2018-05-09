@@ -9,4 +9,10 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style TargetType="TextBlock" x:Key="buttonText">
+        <Setter Property="Margin" Value="10,0,10,0"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="MaxWidth" Value="100"/>
+        <Setter Property="TextAlignment" Value="Center"/>
+    </Style>
 </ResourceDictionary>
