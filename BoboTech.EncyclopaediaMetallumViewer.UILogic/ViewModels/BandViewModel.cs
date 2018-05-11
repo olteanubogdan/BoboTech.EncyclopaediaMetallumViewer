@@ -39,7 +39,7 @@ namespace BoboTech.EncyclopaediaMetallumViewer.UILogic.ViewModels
                 var errorId = Invariant($"{DateTime.Now:yyyyMMdd_HHmmss}");
                 Logger.Log.Error(ex, "Failed to load band by id.", caller, errorId);
                 IsBusy = false;
-                MessageBoxService.ShowMessage($"Failed to search by band name. See log for more info. Error id is {errorId}.", WindowTitle, MessageButton.OK, MessageIcon.Error);
+                MessageBoxService.ShowMessage($"Failed to get band details.{Environment.NewLine}{ex.Message}{Environment.NewLine}See log for more info. Error id is {errorId}.", WindowTitle, MessageButton.OK, MessageIcon.Error);
             }
         }
 

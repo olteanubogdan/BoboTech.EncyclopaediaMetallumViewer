@@ -76,7 +76,8 @@ namespace BoboTech.EncyclopaediaMetallumViewer.UILogic.ViewModels
             {
                 var errorId = Invariant($"{DateTime.Now:yyyyMMdd_HHmmss}");
                 Logger.Log.Error(ex, "Failed to load app.", caller, errorId);
-                MessageBoxService.ShowMessage($"Failed to load app. See log for more info. Error id is {errorId}.", WindowTitle, MessageButton.OK, MessageIcon.Error);
+                MessageBoxService.ShowMessage($"Failed to load app.{Environment.NewLine}{ex.Message}{Environment.NewLine}See log for more info. Error id is {errorId}.", WindowTitle, MessageButton.OK, MessageIcon.Error);
+                HostService.Close();
             }
         }
 

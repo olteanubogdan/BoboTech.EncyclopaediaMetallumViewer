@@ -15,14 +15,10 @@ namespace BoboTech.EncyclopaediaMetallumApiProxy.Controllers
 
         protected async Task<Stream> GetStreamAsync(string query)
         {
-            var memoryStream = new MemoryStream();
+            Stream stream = null;
             using (var client = new HttpClient())
-            {
-                var stream = await client.GetStreamAsync(new Uri($"{Settings.Value.BaseUrl}{query}?api_key={Settings.Value.ApiKey}"));
-                await stream.CopyToAsync(memoryStream);
-            }
-            memoryStream.Position = 0;
-            return memoryStream;
+                stream = await client.GetStreamAsync(new Uri($"{Settings.Value.BaseUrl}{query}?api_key={Settings.Value.ApiKey}"));
+            return stream;
         }
     }
 }

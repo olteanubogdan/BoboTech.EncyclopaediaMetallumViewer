@@ -13,7 +13,7 @@ namespace BoboTech.EncyclopaediaMetallumApiProxy.Filters
 
         public void OnException(ExceptionContext context)
         {
-            var errorId = Invariant($"{DateTime.Now:yyyyMMddHHmmss}");
+            var errorId = Invariant($"{DateTime.Now:yyyyMMdd_HHmmss}");
             _logger.LogError($"ErrorId is {errorId}. {context.Exception}");
             context.ExceptionHandled = true;
             context.HttpContext.Response.Headers.Add("ErrorId", errorId);

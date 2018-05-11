@@ -66,7 +66,7 @@ namespace BoboTech.EncyclopaediaMetallumViewer.UILogic.ViewModels
                 var errorId = Invariant($"{DateTime.Now:yyyyMMdd_HHmmss}");
                 Logger.Log.Error(ex, "Failed to search by band name.", caller, errorId);
                 IsBusy = false;
-                MessageBoxService.ShowMessage($"Failed to search by band name. See log for more info. Error id is {errorId}.", WindowTitle, MessageButton.OK, MessageIcon.Error);
+                MessageBoxService.ShowMessage($"Failed to search by band name.{Environment.NewLine}{ex.Message}{Environment.NewLine}See log for more info. Error id is {errorId}.", WindowTitle, MessageButton.OK, MessageIcon.Error);
             }
         }
 

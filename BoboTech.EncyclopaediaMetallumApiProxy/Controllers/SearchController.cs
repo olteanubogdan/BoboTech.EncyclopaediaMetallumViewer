@@ -10,7 +10,12 @@ namespace BoboTech.EncyclopaediaMetallumApiProxy.Controllers
     {
         public SearchController(IOptions<Settings.EncyclopaediaMetallum> settings) : base(settings) { }
 
-        // GET: api/search/{searchType}/{keyword}
+        /// <summary>
+        /// GET: api/search/{searchType}/{keyword}
+        /// </summary>
+        /// <param name="searchType"></param>
+        /// <param name="keyword"></param>
+        /// <returns></returns>
         [HttpGet("{searchType}/{keyword}", Name = "Search")]
         public Task<Stream> Get(string searchType, string keyword) => GetStreamAsync($"/search/{searchType}/{keyword}");
     }

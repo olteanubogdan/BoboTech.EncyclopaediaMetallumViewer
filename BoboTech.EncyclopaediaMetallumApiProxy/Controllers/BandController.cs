@@ -10,7 +10,11 @@ namespace BoboTech.EncyclopaediaMetallumApiProxy.Controllers
     {
         public BandController(IOptions<Settings.EncyclopaediaMetallum> settings) : base(settings) { }
 
-        // GET: api/band/{id}
+        /// <summary>
+        /// GET: api/band/{id}
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("{id}", Name = "GetById")]
         public Task<Stream> Get(long id) => GetStreamAsync($"/band/{id}");
     }
