@@ -6,8 +6,6 @@ using DevExpress.Mvvm;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
-using System.Linq;
 using System.Threading.Tasks;
 using static System.FormattableString;
 
@@ -54,32 +52,20 @@ namespace BoboTech.EncyclopaediaMetallumViewer.UILogic.ViewModels
             var debug = new Action<string>(x => Logger.Log.Debug(x, caller));
             try
             {
+                BusyStatus = "Searching ...";
+                IsBusy = true;
                 Bands.Clear();
-
-                //SearchBand searchBand = null;
-                //using (var memoryStream = new MemoryStream())
-                //{
-                //    using (var client = new HttpClient())
-                //    {
-                //        await (await client.GetStreamAsync(
-                //            new Uri(Settings.EncyclopaediaMetallum.BaseUrl)
-                //                .AddRelativeUri(Settings.EncyclopaediaMetallum.SearchBand)
-                //                .AddRelativeUri(BandNameToSearch)
-                //                .AddRelativeUri($"?api_key={Settings.EncyclopaediaMetallum.ApiKey}")
-                //            )).CopyToAsync(memoryStream);
-                //    }
-                //    await memoryStream.SaveForDebug("json");
-                //    searchBand = memoryStream.SerializeJson<SearchBand>();
-                //}
                 var searchBand = await DataService.SearchBandAsync(BandNameToSearch);
                 debug($"No. of bands found: {searchBand?.Data?.SearchResults?.Count ?? 0}");
                 (searchBand?.Data?.SearchResults ?? new List<Band>()).ForEach(Bands.Add);
                 searchBand.To(this);
+                IsBusy = false;
             }
             catch (Exception ex)
             {
                 var errorId = Invariant($"{DateTime.Now:yyyyMMdd_HHmmss}");
                 Logger.Log.Error(ex, "Failed to search by band name.", caller, errorId);
+                IsBusy = false;
                 MessageBoxService.ShowMessage($"Failed to search by band name. See log for more info. Error id is {errorId}.", WindowTitle, MessageButton.OK, MessageIcon.Error);
             }
         }
@@ -93,10 +79,17 @@ namespace BoboTech.EncyclopaediaMetallumViewer.UILogic.ViewModels
             }
         }
 
-        [GenerateButton(Order = 1, BindCommandTo = "ShowTestCommand", BindTextTo = nameof(ShowTestLabel))]
-        public void ShowTest()
+        [GenerateButton(Order = 1, BindCommandTo = "ShowTestAsyncCommand", BindTextTo = nameof(ShowTestLabel))]
+        public async Task ShowTestAsync()
         {
-            MessageBoxService.ShowMessage("Testing", WindowTitle);
+            BusyStatus = "Testing.";
+            IsBusy = true;
+            //MessageBoxService.ShowMessage("Testing", WindowTitle);
+            await Task.Delay(1000);
+            BusyStatus = "Almost done.";
+            await Task.Delay(1000);
+            BusyStatus = "Done.";
+            IsBusy = false;
         }
 
         public override string ToString() => $"{nameof(SearchBandViewModel)} ({_instanceId:N}): {nameof(BandNameToSearch)} - {BandNameToSearch}, {nameof(SearchStatus)} - {SearchStatus}";

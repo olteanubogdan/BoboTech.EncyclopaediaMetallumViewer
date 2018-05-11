@@ -4,41 +4,44 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:fragments="clr-namespace:BoboTech.EncyclopaediaMetallumViewer.Fragments"
+             xmlns:controls="clr-namespace:BoboTech.EncyclopaediaMetallumViewer.Controls"
              xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">
     <dxmvvm:Interaction.Behaviors>
         <dxmvvm:EventToCommand EventName="Loaded" Command="{Binding ViewLoadedAsyncCommand}"/>
     </dxmvvm:Interaction.Behaviors>
-    <Grid>
-        <!--#region row and column definitions-->
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <!--#endregion-->
-        <!--#region header-->
-        <!--#region name and id-->
-        <TextBlock Text="Name:" Margin="3"/>
-        <TextBlock Grid.Column="1" Text="{Binding Name}" Margin="3"/>
-        <TextBlock Grid.Column="2" Text="Id:" Margin="3"/>
-        <TextBlock Grid.Column="3" Text="{Binding Id}" Margin="3"/>
-        <!--#endregion-->
-        <!--#region genre and from-->
-        <TextBlock Grid.Row="1" Text="Genre:" Margin="3"/>
-        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Genre}" Margin="3"/>
-        <TextBlock Grid.Row="1" Grid.Column="2" Text="From:" Margin="3"/>
-        <TextBlock Grid.Row="1" Grid.Column="3" Text="{Binding Country}" Margin="3"/>
-        <!--#endregion-->
-        <!--#endregion-->
-        <fragments:Footer Grid.Row="3" Grid.ColumnSpan="4"/>
-    </Grid>
+    <controls:BusyIndicator IsBusy="{Binding IsBusy}" Status="{Binding BusyStatus}">
+        <Grid>
+            <!--#region row and column definitions-->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <!--#endregion-->
+            <!--#region header-->
+            <!--#region name and id-->
+            <TextBlock Text="Name:" Margin="3"/>
+            <TextBlock Grid.Column="1" Text="{Binding Name}" Margin="3"/>
+            <TextBlock Grid.Column="2" Text="Id:" Margin="3"/>
+            <TextBlock Grid.Column="3" Text="{Binding Id}" Margin="3"/>
+            <!--#endregion-->
+            <!--#region genre and from-->
+            <TextBlock Grid.Row="1" Text="Genre:" Margin="3"/>
+            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Genre}" Margin="3"/>
+            <TextBlock Grid.Row="1" Grid.Column="2" Text="From:" Margin="3"/>
+            <TextBlock Grid.Row="1" Grid.Column="3" Text="{Binding Country}" Margin="3"/>
+            <!--#endregion-->
+            <!--#endregion-->
+            <fragments:Footer Grid.Row="3" Grid.ColumnSpan="4"/>
+        </Grid>
+    </controls:BusyIndicator>
 </UserControl>

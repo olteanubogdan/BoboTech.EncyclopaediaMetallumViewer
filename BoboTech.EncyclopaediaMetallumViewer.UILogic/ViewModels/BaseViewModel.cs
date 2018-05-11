@@ -28,6 +28,10 @@ namespace BoboTech.EncyclopaediaMetallumViewer.UILogic.ViewModels
 
         public virtual string DonationMessage { get; set; }
 
+        public virtual bool IsBusy { get; set; }
+
+        public virtual string BusyStatus { get; set; }
+
         #endregion
 
         #region Public methods (will be transformed to commands by ViewModelSource)
@@ -35,7 +39,7 @@ namespace BoboTech.EncyclopaediaMetallumViewer.UILogic.ViewModels
         [GenerateButton(Order = 0, BindCommandTo = "GoBackCommand", BindTextTo = nameof(GoBackLabel))]
         public void GoBack() => HostService.GoBack();
 
-        public bool CanGoBack() => HostService.CanGoBack();
+        public bool CanGoBack() => HostService?.CanGoBack() ?? false;
 
         public void OpenDonationUrl()
         {

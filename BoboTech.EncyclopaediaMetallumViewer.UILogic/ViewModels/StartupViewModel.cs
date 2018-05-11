@@ -22,7 +22,8 @@ namespace BoboTech.EncyclopaediaMetallumViewer.UILogic.ViewModels
             new AssemblyName("PresentationFramework-SystemData, Version=4.0.4.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processor architecture=MSIL"),
             new AssemblyName("NLog"),
             new AssemblyName("Newtonsoft.Json"),
-            new AssemblyName("AutoMapper")
+            new AssemblyName("AutoMapper"),
+            new AssemblyName("FontAwesome.WPF")
         };
 
         #endregion
@@ -60,14 +61,14 @@ namespace BoboTech.EncyclopaediaMetallumViewer.UILogic.ViewModels
                     Progress = ((counter) / (_assembliesToLoad.Count + 2)) * 100;
                 }
                 debug("There shouln't be any more \"Loaded 'bla bla bla'\" except \"Anonymously Hosted DynamicMethods Assembly\" after this.");
-                var initializeAutoMapperSleepTask = Task.Delay(250);
+                var initializeAutoMapperSleepTask = Task.Delay(150);
                 State = "Initializing AutoMapper ...";
                 MapperService.SingletonInstance.Initialize();
                 Progress = ((counter + 1) / (_assembliesToLoad.Count + 2)) * 100;
                 await initializeAutoMapperSleepTask;
                 State = "App loaded.";
                 Progress = 100;
-                await Task.Delay(500);
+                await Task.Delay(300);
                 HostService.ShowInitialView();
                 HostService.Close();
             }

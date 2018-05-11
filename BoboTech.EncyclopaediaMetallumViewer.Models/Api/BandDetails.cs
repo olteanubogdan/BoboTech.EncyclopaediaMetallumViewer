@@ -15,7 +15,7 @@ namespace BoboTech.EncyclopaediaMetallumViewer.Models.Api
         public string Status { get; set; }
 
         [JsonProperty("formed in")]
-        public int FormedIn { get; set; }
+        public string FormedIn { get; set; }
 
         public string Genre { get; set; }
 
