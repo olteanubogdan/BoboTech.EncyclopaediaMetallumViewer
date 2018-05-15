@@ -6,7 +6,7 @@ using System.Diagnostics;
 
 namespace BoboTech.EncyclopaediaMetallumViewer.UILogic.ViewModels
 {
-    public abstract class BaseViewModel : ViewModelBase
+    public abstract class BaseViewModel : ViewModelBase, ISupportChildViewModel
     {
         #region Fields
 
@@ -24,6 +24,8 @@ namespace BoboTech.EncyclopaediaMetallumViewer.UILogic.ViewModels
 
         public virtual string GoBackLabel { get; set; } = "Back";
 
+        public virtual string GoForwardLabel { get; set; } = "Forward";
+
         public virtual string EMApiDonationUrl { get; set; }
 
         public virtual string EMApiDonationMessage { get; set; }
@@ -40,14 +42,21 @@ namespace BoboTech.EncyclopaediaMetallumViewer.UILogic.ViewModels
 
         public virtual string BusyStatus { get; set; }
 
+        public object ChildViewModel { get; set; }
+
         #endregion
 
         #region Public methods (will be transformed to commands by ViewModelSource)
 
-        [GenerateButton(Order = 0, BindCommandTo = "GoBackCommand", BindTextTo = nameof(GoBackLabel))]
+        [GenerateButton(Order = -2, BindCommandTo = "GoBackCommand", BindTextTo = nameof(GoBackLabel))]
         public void GoBack() => HostService.GoBack();
 
         public bool CanGoBack() => HostService?.CanGoBack() ?? false;
+
+        [GenerateButton(Order = -1, BindCommandTo = "GoForwardCommand", BindTextTo = nameof(GoForwardLabel))]
+        public void GoForward() => HostService.GoForward();
+
+        public bool CanGoForward() => HostService?.CanGoForward() ?? false;
 
         public void OpenEMApiDonationUrl()
         {

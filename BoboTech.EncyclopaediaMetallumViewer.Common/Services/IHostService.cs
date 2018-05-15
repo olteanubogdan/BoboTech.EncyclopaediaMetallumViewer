@@ -11,5 +11,9 @@
         void GoBack();
 
         bool CanGoBack();
+
+        void GoForward();
+
+        bool CanGoForward();
     }
 }

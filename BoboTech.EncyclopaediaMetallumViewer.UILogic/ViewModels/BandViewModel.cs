@@ -50,7 +50,7 @@ namespace BoboTech.EncyclopaediaMetallumViewer.UILogic.ViewModels
 
         #region Public methods (will be transformed to commands by ViewModelSource)
 
-        public override string ToString() => Invariant($"{nameof(BandViewModel)} ({Id:d} - {_instanceId:N}): {nameof(Name)} - {Name}, {nameof(Genre)} - {Genre}, {nameof(CountryOfOrigin)} - {CountryOfOrigin}");
+        public override string ToString() => Invariant($"{nameof(BandViewModel)} ({Id:d} - {_instanceId:N}): {nameof(Name)} - {Name}, {nameof(Genre)} - {Genre}, {nameof(CountryOfOrigin)} - {CountryOfOrigin}, {nameof(Discography)} - {Discography?.Count ?? 0:d}, {nameof(CurrentLineup)} - {CurrentLineup?.Count ?? 0:d}");
 
         public async Task ViewLoadedAsync()
         {
