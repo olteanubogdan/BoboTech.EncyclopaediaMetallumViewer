@@ -17,14 +17,6 @@ namespace BoboTech.EncyclopaediaMetallumViewer.UILogic.ViewModels
 
         public virtual string BandNameToSearch { get; set; }
 
-        public virtual string SearchStatus { get; set; }
-
-        public virtual string SearchCode { get; set; }
-
-        public virtual string SearchMessage { get; set; }
-
-        public virtual string SearchHash { get; set; }
-
         public ObservableCollection<Band> Bands { get; } = new ObservableCollection<Band>();
 
         public virtual object SelectedBand { get; set; }
@@ -73,10 +65,7 @@ namespace BoboTech.EncyclopaediaMetallumViewer.UILogic.ViewModels
         public void ViewBand()
         {
             if (SelectedBand is Band band)
-            {
-                var vm = band.To<BandViewModel>();
-                HostService.ShowView(vm);
-            }
+                HostService.ShowView(band.To<BandViewModel>());
         }
 
         [GenerateButton(Order = 1, BindCommandTo = "ShowTestAsyncCommand", BindTextTo = nameof(ShowTestLabel))]
@@ -92,7 +81,7 @@ namespace BoboTech.EncyclopaediaMetallumViewer.UILogic.ViewModels
             IsBusy = false;
         }
 
-        public override string ToString() => $"{nameof(SearchBandViewModel)} ({_instanceId:N}): {nameof(BandNameToSearch)} - {BandNameToSearch}, {nameof(SearchStatus)} - {SearchStatus}";
+        public override string ToString() => $"{nameof(SearchBandViewModel)} ({_instanceId:N}): {nameof(BandNameToSearch)} - {BandNameToSearch}, {nameof(EMApiCallStatus)} - {EMApiCallStatus}";
 
         #endregion
     }

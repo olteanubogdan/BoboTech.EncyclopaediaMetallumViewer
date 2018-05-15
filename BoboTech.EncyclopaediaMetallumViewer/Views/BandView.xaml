@@ -13,35 +13,71 @@
     </dxmvvm:Interaction.Behaviors>
     <controls:BusyIndicator IsBusy="{Binding IsBusy}" Status="{Binding BusyStatus}">
         <Grid>
-            <!--#region row and column definitions-->
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <!--#endregion-->
-            <!--#region header-->
-            <!--#region name and id-->
-            <TextBlock Text="Name:" Margin="3"/>
-            <TextBlock Grid.Column="1" Text="{Binding Name}" Margin="3"/>
-            <TextBlock Grid.Column="2" Text="Id:" Margin="3"/>
-            <TextBlock Grid.Column="3" Text="{Binding Id}" Margin="3"/>
-            <!--#endregion-->
-            <!--#region genre and from-->
-            <TextBlock Grid.Row="1" Text="Genre:" Margin="3"/>
-            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Genre}" Margin="3"/>
-            <TextBlock Grid.Row="1" Grid.Column="2" Text="From:" Margin="3"/>
-            <TextBlock Grid.Row="1" Grid.Column="3" Text="{Binding Country}" Margin="3"/>
-            <!--#endregion-->
-            <!--#endregion-->
-            <fragments:Footer Grid.Row="3" Grid.ColumnSpan="4"/>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.Resources>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="Margin" Value="3"/>
+                        <Setter Property="TextWrapping" Value="Wrap"/>
+                    </Style>
+                </Grid.Resources>
+                <!--#region name and id-->
+                <TextBlock Text="Name:"/>
+                <TextBlock Grid.Column="1" Text="{Binding Name}"/>
+                <TextBlock Grid.Column="2" Text="Id:"/>
+                <TextBlock Grid.Column="3" Text="{Binding Id}"/>
+                <!--#endregion-->
+                <!--#region Country of origin and Genre-->
+                <TextBlock Grid.Row="1" Text="Country of origin:"/>
+                <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding CountryOfOrigin}"/>
+                <TextBlock Grid.Row="1" Grid.Column="2" Text="Genre:"/>
+                <TextBlock Grid.Row="1" Grid.Column="3" Text="{Binding Genre}"/>
+                <!--#endregion-->
+                <!--#region Location and Lyrical themes-->
+                <TextBlock Grid.Row="2" Text="Location:"/>
+                <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Location}"/>
+                <TextBlock Grid.Row="2" Grid.Column="2" Text="Lyrical themes:"/>
+                <TextBlock Grid.Row="2" Grid.Column="3" Text="{Binding LyricalThemes}"/>
+                <!--#endregion-->
+                <!--#region Status and Last label-->
+                <TextBlock Grid.Row="3" Text="Status:"/>
+                <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding Status}"/>
+                <TextBlock Grid.Row="3" Grid.Column="2" Text="Last label:"/>
+                <TextBlock Grid.Row="3" Grid.Column="3" Text="{Binding CurrentLabel}"/>
+                <!--#endregion-->
+                <!--#region Formed in and Years active-->
+                <TextBlock Grid.Row="4" Text="Formed in:"/>
+                <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding FormedIn}"/>
+                <TextBlock Grid.Row="4" Grid.Column="2" Text="Years active:"/>
+                <TextBlock Grid.Row="4" Grid.Column="3" Text="{Binding YearsActive}"/>
+                <!--#endregion-->
+            </Grid>
+            <TabControl Grid.Row="1" Margin="3">
+                <TabItem Header="Discography">
+                    <ListView ItemsSource="{Binding Discography}" SelectedItem="{Binding SelectedAlbum}" Style="{StaticResource ListViewStretchItem}"/>
+                </TabItem>
+                <TabItem Header="Current lineup">
+                    <ListView ItemsSource="{Binding CurrentLineup}" SelectedItem="{Binding SelectedMember}" Style="{StaticResource ListViewStretchItem}"/>
+                </TabItem>
+            </TabControl>
+            <fragments:Footer Grid.Row="2"/>
         </Grid>
     </controls:BusyIndicator>
 </UserControl>

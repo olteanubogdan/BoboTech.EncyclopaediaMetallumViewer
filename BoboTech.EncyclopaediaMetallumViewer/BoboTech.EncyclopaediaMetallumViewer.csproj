@@ -90,6 +90,9 @@
     </ApplicationDefinition>
     <Compile Include="Adorners\OverlayAdorner.cs" />
     <Compile Include="Controls\BusyIndicator.cs" />
+    <Compile Include="Fragments\Album.xaml.cs">
+      <DependentUpon>Album.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Fragments\Band.xaml.cs">
       <DependentUpon>Band.xaml</DependentUpon>
     </Compile>
@@ -98,6 +101,9 @@
     </Compile>
     <Compile Include="Fragments\Footer.xaml.cs">
       <DependentUpon>Footer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Fragments\Member.xaml.cs">
+      <DependentUpon>Member.xaml</DependentUpon>
     </Compile>
     <Compile Include="Services\HostService.cs" />
     <Compile Include="Windows\StartupWindow.xaml.cs">
@@ -120,6 +126,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Fragments\Album.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Fragments\Band.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -129,6 +139,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Fragments\Footer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Fragments\Member.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

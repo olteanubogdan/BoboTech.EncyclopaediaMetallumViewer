@@ -8,6 +8,8 @@
                 </Style>
             </Setter.Value>
         </Setter>
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
+        <Setter Property="ScrollViewer.CanContentScroll" Value="False"/>
     </Style>
     <Style TargetType="TextBlock" x:Key="buttonText">
         <Setter Property="Margin" Value="10,0,10,0"/>

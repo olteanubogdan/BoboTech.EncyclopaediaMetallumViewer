@@ -1,5 +1,8 @@
-﻿using DevExpress.Mvvm;
+﻿using BoboTech.EncyclopaediaMetallumViewer.Models.Api;
+using BoboTech.EncyclopaediaMetallumViewer.UILogic.Extensions;
+using DevExpress.Mvvm;
 using System;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using static System.FormattableString;
 
@@ -9,19 +12,45 @@ namespace BoboTech.EncyclopaediaMetallumViewer.UILogic.ViewModels
     {
         #region Properties
 
+        public virtual long Id { get; set; }
+
         public virtual string Name { get; set; }
 
-        public virtual long Id { get; set; }
+        public virtual string Logo { get; set; }
+
+        public virtual string Photo { get; set; }
+
+        public virtual string Bio { get; set; }
+
+        public virtual string CountryOfOrigin { get; set; }
+
+        public virtual string Location { get; set; }
+
+        public virtual string Status { get; set; }
+
+        public virtual string FormedIn { get; set; }
 
         public virtual string Genre { get; set; }
 
-        public virtual string Country { get; set; }
+        public virtual string LyricalThemes { get; set; }
+
+        public virtual string CurrentLabel { get; set; }
+
+        public virtual string YearsActive { get; set; }
+
+        public ObservableCollection<Album> Discography { get; } = new ObservableCollection<Album>();
+
+        public virtual object SelectedAlbum { get; set; }
+
+        public ObservableCollection<Member> CurrentLineup { get; } = new ObservableCollection<Member>();
+
+        public virtual object SelectedMember { get; set; }
 
         #endregion
 
         #region Public methods (will be transformed to commands by ViewModelSource)
 
-        public override string ToString() => Invariant($"{nameof(BandViewModel)} ({Id:d} - {_instanceId:N}): {nameof(Name)} - {Name}, {nameof(Genre)} - {Genre}, {nameof(Country)} - {Country}");
+        public override string ToString() => Invariant($"{nameof(BandViewModel)} ({Id:d} - {_instanceId:N}): {nameof(Name)} - {Name}, {nameof(Genre)} - {Genre}, {nameof(CountryOfOrigin)} - {CountryOfOrigin}");
 
         public async Task ViewLoadedAsync()
         {
@@ -30,9 +59,17 @@ namespace BoboTech.EncyclopaediaMetallumViewer.UILogic.ViewModels
             {
                 BusyStatus = "Getting data ...";
                 IsBusy = true;
+                Discography.Clear();
+                CurrentLineup.Clear();
                 var band = await Services.DataService.GetBandAsync(Id);
                 IsBusy = false;
-                Name = band?.Data?.BandName;
+                band?.To(this);
+
+                if ((band?.Data?.Discography?.Count ?? 0) > 0)
+                    band.Data.Discography.ForEach(Discography.Add);
+
+                if ((band?.Data?.CurrentLineup?.Count ?? 0) > 0)
+                    band.Data.CurrentLineup.ForEach(CurrentLineup.Add);
             }
             catch (Exception ex)
             {

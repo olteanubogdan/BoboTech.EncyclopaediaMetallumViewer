@@ -1,0 +1,38 @@
+﻿<UserControl x:Class="BoboTech.EncyclopaediaMetallumViewer.Fragments.Member"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d" 
+             d:DesignHeight="60" d:DesignWidth="750">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <Style TargetType="TextBlock" x:Key="HeaderText">
+                <Setter Property="FontSize" Value="10"/>
+            </Style>
+            <Style TargetType="TextBlock">
+                <Setter Property="TextWrapping" Value="Wrap"/>
+            </Style>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="Name" Style="{StaticResource HeaderText}"/>
+        <TextBlock Grid.Row="1" Text="{Binding Name}"/>
+        <TextBlock Grid.Row="2" Text="Instrument" Style="{StaticResource HeaderText}"/>
+        <TextBlock Grid.Row="3" Text="{Binding Instrument}"/>
+        <TextBlock Grid.Column="1" Text="Id" Style="{StaticResource HeaderText}"/>
+        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Id}"/>
+        <TextBlock Grid.Row="2" Grid.Column="1" Text="Years" Style="{StaticResource HeaderText}"/>
+        <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding Years}"/>
+    </Grid>
+</UserControl>

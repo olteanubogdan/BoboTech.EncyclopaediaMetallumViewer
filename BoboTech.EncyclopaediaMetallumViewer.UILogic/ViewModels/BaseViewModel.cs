@@ -24,9 +24,17 @@ namespace BoboTech.EncyclopaediaMetallumViewer.UILogic.ViewModels
 
         public virtual string GoBackLabel { get; set; } = "Back";
 
-        public virtual string DonationUrl { get; set; }
+        public virtual string EMApiDonationUrl { get; set; }
 
-        public virtual string DonationMessage { get; set; }
+        public virtual string EMApiDonationMessage { get; set; }
+
+        public virtual string EMApiCallStatus { get; set; }
+
+        public virtual string EMApiCallCode { get; set; }
+
+        public virtual string EMApiCallMessage { get; set; }
+
+        public virtual string EMApiCallHash { get; set; }
 
         public virtual bool IsBusy { get; set; }
 
@@ -41,12 +49,12 @@ namespace BoboTech.EncyclopaediaMetallumViewer.UILogic.ViewModels
 
         public bool CanGoBack() => HostService?.CanGoBack() ?? false;
 
-        public void OpenDonationUrl()
+        public void OpenEMApiDonationUrl()
         {
-            if (string.IsNullOrWhiteSpace(DonationUrl))
+            if (string.IsNullOrWhiteSpace(EMApiDonationUrl))
                 return;
 
-            Process.Start(DonationUrl);
+            Process.Start(EMApiDonationUrl);
         }
 
         #endregion

@@ -4,11 +4,31 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d"
-             d:DesignHeight="50" d:DesignWidth="200">
+             d:DesignHeight="80" d:DesignWidth="400">
     <StackPanel>
-        <TextBlock Grid.Row="3" Grid.ColumnSpan="3" Margin="3">
-            <Hyperlink Command="{Binding OpenDonationUrlCommand}">
-                <TextBlock Text="{Binding DonationMessage}"/>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Status:" Margin="3"/>
+            <TextBlock Grid.Column="1" Text="{Binding EMApiCallStatus}" Margin="3"/>
+            <TextBlock Grid.Column="2" Text="Code:" Margin="3"/>
+            <TextBlock Grid.Column="3" Text="{Binding EMApiCallCode}" Margin="3"/>
+            <TextBlock Grid.Row="1" Text="Message:" Margin="3"/>
+            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding EMApiCallMessage}" Margin="3" TextWrapping="Wrap"/>
+            <TextBlock Grid.Row="1" Grid.Column="2" Text="Hash:" Margin="3"/>
+            <TextBlock Grid.Row="1" Grid.Column="3" Text="{Binding EMApiCallHash}" Margin="3"/>
+        </Grid>
+        <TextBlock Margin="3">
+            <Hyperlink Command="{Binding OpenEMApiDonationUrlCommand}">
+                <TextBlock Text="{Binding EMApiDonationMessage}"/>
             </Hyperlink>
         </TextBlock>
         <StackPanel Orientation="Horizontal" Name="ButtonsPanel"/>
