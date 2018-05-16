@@ -17,18 +17,18 @@
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <TextBlock Text="Status:" Margin="3"/>
-            <TextBlock Grid.Column="1" Text="{Binding EMApiCallStatus}" Margin="3"/>
-            <TextBlock Grid.Column="2" Text="Code:" Margin="3"/>
-            <TextBlock Grid.Column="3" Text="{Binding EMApiCallCode}" Margin="3"/>
-            <TextBlock Grid.Row="1" Text="Message:" Margin="3"/>
-            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding EMApiCallMessage}" Margin="3" TextWrapping="Wrap"/>
-            <TextBlock Grid.Row="1" Grid.Column="2" Text="Hash:" Margin="3"/>
-            <TextBlock Grid.Row="1" Grid.Column="3" Text="{Binding EMApiCallHash}" Margin="3"/>
+            <TextBlock Text="Status:"/>
+            <TextBlock Grid.Column="1" Text="{Binding EMApiCallStatus}"/>
+            <TextBlock Grid.Column="2" Text="Code:"/>
+            <TextBlock Grid.Column="3" Text="{Binding EMApiCallCode}"/>
+            <TextBlock Grid.Row="1" Text="Message:"/>
+            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding EMApiCallMessage}"/>
+            <TextBlock Grid.Row="1" Grid.Column="2" Text="Hash:"/>
+            <TextBlock Grid.Row="1" Grid.Column="3" Text="{Binding EMApiCallHash}"/>
         </Grid>
-        <TextBlock Margin="3">
+        <TextBlock>
             <Hyperlink Command="{Binding OpenEMApiDonationUrlCommand}">
-                <TextBlock Text="{Binding EMApiDonationMessage}"/>
+                <TextBlock Text="{Binding EMApiDonationMessage}" Margin="0"/>
             </Hyperlink>
         </TextBlock>
         <StackPanel Orientation="Horizontal" Name="ButtonsPanel"/>

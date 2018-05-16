@@ -5,16 +5,6 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d" 
              d:DesignHeight="60" d:DesignWidth="750">
-    <UserControl.Resources>
-        <ResourceDictionary>
-            <Style TargetType="TextBlock" x:Key="HeaderText">
-                <Setter Property="FontSize" Value="10"/>
-            </Style>
-            <Style TargetType="TextBlock">
-                <Setter Property="TextWrapping" Value="Wrap"/>
-            </Style>
-        </ResourceDictionary>
-    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -26,13 +16,13 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <TextBlock Text="Name" Style="{StaticResource HeaderText}"/>
-        <TextBlock Grid.Row="1" Text="{Binding Name}"/>
-        <TextBlock Grid.Row="2" Text="Instrument" Style="{StaticResource HeaderText}"/>
-        <TextBlock Grid.Row="3" Text="{Binding Instrument}"/>
-        <TextBlock Grid.Column="1" Text="Id" Style="{StaticResource HeaderText}"/>
-        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Id}"/>
-        <TextBlock Grid.Row="2" Grid.Column="1" Text="Years" Style="{StaticResource HeaderText}"/>
-        <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding Years}"/>
+        <TextBlock Text="Name" Style="{StaticResource ListViewItemHeaderText}"/>
+        <TextBlock Grid.Row="1" Text="{Binding Name}" Style="{StaticResource ListViewItemText}"/>
+        <TextBlock Grid.Row="2" Text="Instrument" Style="{StaticResource ListViewItemHeaderText}"/>
+        <TextBlock Grid.Row="3" Text="{Binding Instrument}" Style="{StaticResource ListViewItemText}"/>
+        <TextBlock Grid.Column="1" Text="Id" Style="{StaticResource ListViewItemHeaderText}"/>
+        <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding Id}" Style="{StaticResource ListViewItemText}"/>
+        <TextBlock Grid.Column="1" Grid.Row="2" Text="Years" Style="{StaticResource ListViewItemHeaderText}"/>
+        <TextBlock Grid.Column="1" Grid.Row="3" Text="{Binding Years}" Style="{StaticResource ListViewItemText}"/>
     </Grid>
 </UserControl>

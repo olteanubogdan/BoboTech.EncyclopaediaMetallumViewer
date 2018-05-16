@@ -42,7 +42,7 @@ namespace BoboTech.EncyclopaediaMetallumViewer.Fragments
 
                     textBlock.SetBinding(TextBlock.TextProperty, new Binding(generateButtonAttribute.BindTextTo));
 
-                    var button = new Button { Content = textBlock, Margin = new Thickness(3) };
+                    var button = new Button { Content = textBlock/*, Margin = new Thickness(3)*/ };
 
                     button.SetBinding(Button.CommandProperty, new Binding(generateButtonAttribute.BindCommandTo));
 

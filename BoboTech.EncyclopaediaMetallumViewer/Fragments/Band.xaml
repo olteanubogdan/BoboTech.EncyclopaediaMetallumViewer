@@ -5,13 +5,6 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d"
              d:DesignHeight="60" d:DesignWidth="750">
-    <UserControl.Resources>
-        <ResourceDictionary>
-            <Style TargetType="TextBlock" x:Key="HeaderText">
-                <Setter Property="FontSize" Value="10"/>
-            </Style>
-        </ResourceDictionary>
-    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -23,13 +16,13 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <TextBlock Text="Name" Style="{StaticResource HeaderText}"/>
-        <TextBlock Grid.Row="1" Text="{Binding Name}"/>
-        <TextBlock Grid.Row="2" Text="Genre" Style="{StaticResource HeaderText}"/>
-        <TextBlock Grid.Row="3" Text="{Binding Genre}"/>
-        <TextBlock Grid.Column="1" Text="Id" Style="{StaticResource HeaderText}"/>
-        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Id}"/>
-        <TextBlock Grid.Row="2" Grid.Column="1" Text="From" Style="{StaticResource HeaderText}"/>
-        <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding Country}"/>
+        <TextBlock Text="Name" Style="{StaticResource ListViewItemHeaderText}"/>
+        <TextBlock Grid.Row="1" Text="{Binding Name}" Style="{StaticResource ListViewItemText}"/>
+        <TextBlock Grid.Row="2" Text="Genre" Style="{StaticResource ListViewItemHeaderText}"/>
+        <TextBlock Grid.Row="3" Text="{Binding Genre}" Style="{StaticResource ListViewItemText}"/>
+        <TextBlock Grid.Column="1" Text="Id" Style="{StaticResource ListViewItemHeaderText}"/>
+        <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding Id}" Style="{StaticResource ListViewItemText}"/>
+        <TextBlock Grid.Column="1" Grid.Row="2" Text="From" Style="{StaticResource ListViewItemHeaderText}"/>
+        <TextBlock Grid.Column="1" Grid.Row="3" Text="{Binding Country}" Style="{StaticResource ListViewItemText}"/>
     </Grid>
 </UserControl>

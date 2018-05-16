@@ -22,10 +22,10 @@
                     <ColumnDefinition/>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock VerticalAlignment="Center" Margin="3" Text="Band name:"/>
-                <TextBox VerticalAlignment="Center" Margin="3" Grid.Column="1" Text="{Binding BandNameToSearch}"/>
-                <Button VerticalAlignment="Center" Margin="3" Grid.Column="2" Command="{Binding SearchBandAsyncCommand, IsAsync=True}">
-                    <TextBlock Margin="10,0,10,0">Search</TextBlock>
+                <TextBlock VerticalAlignment="Center" Text="Band name:"/>
+                <TextBox VerticalAlignment="Center" Grid.Column="1" Text="{Binding BandNameToSearch}"/>
+                <Button VerticalAlignment="Center" Grid.Column="2" Command="{Binding SearchBandAsyncCommand, IsAsync=True}">
+                    <TextBlock Style="{StaticResource buttonText}">Search</TextBlock>
                 </Button>
             </Grid>
             <ListView Grid.Row="2" Margin="3" ItemsSource="{Binding Bands}" SelectedItem="{Binding SelectedBand}" Style="{StaticResource ListViewStretchItem}">

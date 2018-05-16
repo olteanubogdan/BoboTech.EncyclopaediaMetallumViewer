@@ -21,7 +21,9 @@ namespace BoboTech.EncyclopaediaMetallumViewer.UILogic.ViewModels
 
         public virtual object SelectedBand { get; set; }
 
-        public virtual string ShowTestLabel { get; set; } = "Test";
+        public virtual string TestBusyLabel { get; set; } = "Test busy";
+
+        public virtual string TestResizeLabel { get; set; } = "Test resize";
 
         #endregion
 
@@ -68,17 +70,22 @@ namespace BoboTech.EncyclopaediaMetallumViewer.UILogic.ViewModels
                 HostService.ShowView(band.To<BandViewModel>());
         }
 
-        [GenerateButton(Order = 1, BindCommandTo = "ShowTestAsyncCommand", BindTextTo = nameof(ShowTestLabel))]
-        public async Task ShowTestAsync()
+        [GenerateButton(Order = 0, BindCommandTo = "TestBusyAsyncCommand", BindTextTo = nameof(TestBusyLabel))]
+        public async Task TestBusyAsync()
         {
             BusyStatus = "Testing.";
             IsBusy = true;
-            //MessageBoxService.ShowMessage("Testing", WindowTitle);
             await Task.Delay(1000);
             BusyStatus = "Almost done.";
             await Task.Delay(1000);
             BusyStatus = "Done.";
             IsBusy = false;
+        }
+
+        [GenerateButton(Order = 1, BindCommandTo = "TestResizeCommand", BindTextTo = nameof(TestResizeLabel))]
+        public void TestResize()
+        {
+            EMApiCallMessage = "Some long test that, hopefully, should resize the content of Encyclopaedia Metallum API call message.";
         }
 
         public override string ToString() => $"{nameof(SearchBandViewModel)} ({_instanceId:N}): {nameof(BandNameToSearch)} - {BandNameToSearch}, {nameof(EMApiCallStatus)} - {EMApiCallStatus}";

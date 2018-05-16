@@ -50,8 +50,6 @@ namespace BoboTech.EncyclopaediaMetallumViewer.UILogic.ViewModels
 
         #region Public methods (will be transformed to commands by ViewModelSource)
 
-        public override string ToString() => Invariant($"{nameof(BandViewModel)} ({Id:d} - {_instanceId:N}): {nameof(Name)} - {Name}, {nameof(Genre)} - {Genre}, {nameof(CountryOfOrigin)} - {CountryOfOrigin}, {nameof(Discography)} - {Discography?.Count ?? 0:d}, {nameof(CurrentLineup)} - {CurrentLineup?.Count ?? 0:d}");
-
         public async Task ViewLoadedAsync()
         {
             var caller = $"{nameof(BandViewModel)}.{nameof(ViewLoadedAsync)}";
@@ -79,6 +77,8 @@ namespace BoboTech.EncyclopaediaMetallumViewer.UILogic.ViewModels
                 MessageBoxService.ShowMessage($"Failed to get band details.{Environment.NewLine}{ex.Message}{Environment.NewLine}See log for more info. Error id is {errorId}.", WindowTitle, MessageButton.OK, MessageIcon.Error);
             }
         }
+
+        public override string ToString() => Invariant($"{nameof(BandViewModel)} ({Id:d} - {_instanceId:N}): {nameof(Name)} - {Name}, {nameof(Genre)} - {Genre}, {nameof(CountryOfOrigin)} - {CountryOfOrigin}, {nameof(Discography)} - {Discography?.Count ?? 0:d}, {nameof(CurrentLineup)} - {CurrentLineup?.Count ?? 0:d}");
 
         #endregion
     }
