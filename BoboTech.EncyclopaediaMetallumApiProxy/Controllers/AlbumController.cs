@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 namespace BoboTech.EncyclopaediaMetallumApiProxy.Controllers
 {
     [Route("api/[controller]")]
-    public class BandController : BaseController
+    public class AlbumController : BaseController
     {
-        public BandController(IOptions<Settings.EncyclopaediaMetallum> settings) : base(settings) { }
+        public AlbumController(IOptions<Settings.EncyclopaediaMetallum> settings) : base(settings) { }
 
         /// <summary>
-        /// GET: api/band/{id}
+        /// GET: api/album/{id}
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
-        public Task<Stream> Get(long id) => GetStreamAsync($"/band/{id}");
+        public Task<Stream> Get(long id) => GetStreamAsync($"/album/{id}");
     }
 }

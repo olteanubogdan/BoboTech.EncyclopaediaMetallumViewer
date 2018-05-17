@@ -44,6 +44,8 @@ namespace BoboTech.EncyclopaediaMetallumViewer.UILogic.ViewModels
 
         public object ChildViewModel { get; set; }
 
+        public virtual bool DataIsLoaded { get; set; }
+
         #endregion
 
         #region Public methods (will be transformed to commands by ViewModelSource)

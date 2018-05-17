@@ -11,6 +11,9 @@
     <DataTemplate DataType="{x:Type viewModels:BandViewModel}">
         <views:BandView/>
     </DataTemplate>
+    <DataTemplate DataType="{x:Type viewModels:AlbumViewModel}">
+        <views:AlbumView/>
+    </DataTemplate>
     <!--#endregion-->
     <!--#region Fragments-->
     <DataTemplate DataType="{x:Type apiModels:Band}">
@@ -21,6 +24,9 @@
     </DataTemplate>
     <DataTemplate DataType="{x:Type apiModels:Member}">
         <fragments:Member/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type apiModels:Song}">
+        <fragments:Song/>
     </DataTemplate>
     <!--#endregion-->
 </ResourceDictionary>

@@ -105,7 +105,13 @@
     <Compile Include="Fragments\Member.xaml.cs">
       <DependentUpon>Member.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Fragments\Song.xaml.cs">
+      <DependentUpon>Song.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Services\HostService.cs" />
+    <Compile Include="Views\AlbumView.xaml.cs">
+      <DependentUpon>AlbumView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\StartupWindow.xaml.cs">
       <DependentUpon>StartupWindow.xaml</DependentUpon>
     </Compile>
@@ -143,6 +149,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Fragments\Member.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Fragments\Song.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AlbumView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

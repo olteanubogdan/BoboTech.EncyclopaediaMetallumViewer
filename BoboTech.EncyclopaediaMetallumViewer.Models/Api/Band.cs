@@ -1,5 +1,4 @@
 ﻿using System;
-using static System.FormattableString;
 
 namespace BoboTech.EncyclopaediaMetallumViewer.Models.Api
 {
@@ -15,6 +14,6 @@ namespace BoboTech.EncyclopaediaMetallumViewer.Models.Api
 
         public string Country { get; set; }
 
-        public override string ToString() => Invariant($"{nameof(Band)} ({Id:d} - {_instanceId:N}): {nameof(Name)} - {Name}, {nameof(Genre)} - {Genre}, {nameof(Country)} - {Country}");
+        public override string ToString() => $"{nameof(Band)} ({Id} - {_instanceId:N}): {nameof(Name)} - {Name}, {nameof(Genre)} - {Genre}, {nameof(Country)} - {Country}";
     }
 }

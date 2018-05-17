@@ -14,7 +14,7 @@ namespace BoboTech.EncyclopaediaMetallumViewer.UILogic.ViewModels
 
         public virtual long Id { get; set; }
 
-        public virtual string Name { get; set; }
+        public virtual string BandName { get; set; }
 
         public virtual string Logo { get; set; }
 
@@ -52,6 +52,9 @@ namespace BoboTech.EncyclopaediaMetallumViewer.UILogic.ViewModels
 
         public async Task ViewLoadedAsync()
         {
+            if (DataIsLoaded)
+                return;
+
             var caller = $"{nameof(BandViewModel)}.{nameof(ViewLoadedAsync)}";
             try
             {
@@ -62,12 +65,16 @@ namespace BoboTech.EncyclopaediaMetallumViewer.UILogic.ViewModels
                 var band = await Services.DataService.GetBandAsync(Id);
                 IsBusy = false;
                 band?.To(this);
+                band?.Data?.To(this);
+                band?.Data?.Details?.To(this);
 
                 if ((band?.Data?.Discography?.Count ?? 0) > 0)
                     band.Data.Discography.ForEach(Discography.Add);
 
                 if ((band?.Data?.CurrentLineup?.Count ?? 0) > 0)
                     band.Data.CurrentLineup.ForEach(CurrentLineup.Add);
+
+                DataIsLoaded = true;
             }
             catch (Exception ex)
             {
@@ -78,7 +85,13 @@ namespace BoboTech.EncyclopaediaMetallumViewer.UILogic.ViewModels
             }
         }
 
-        public override string ToString() => Invariant($"{nameof(BandViewModel)} ({Id:d} - {_instanceId:N}): {nameof(Name)} - {Name}, {nameof(Genre)} - {Genre}, {nameof(CountryOfOrigin)} - {CountryOfOrigin}, {nameof(Discography)} - {Discography?.Count ?? 0:d}, {nameof(CurrentLineup)} - {CurrentLineup?.Count ?? 0:d}");
+        public void ViewAlbum()
+        {
+            if (SelectedAlbum is Album album)
+                HostService.ShowView(album.To<AlbumViewModel>());
+        }
+
+        public override string ToString() => $"{nameof(BandViewModel)} ({Id} - {_instanceId:N}): {nameof(BandName)} - {BandName}, {nameof(Genre)} - {Genre}, {nameof(CountryOfOrigin)} - {CountryOfOrigin}, {nameof(Discography)} - {Discography?.Count ?? 0}, {nameof(CurrentLineup)} - {CurrentLineup?.Count ?? 0}";
 
         #endregion
     }

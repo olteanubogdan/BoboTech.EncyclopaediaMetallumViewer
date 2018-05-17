@@ -34,7 +34,7 @@
                 </Grid.ColumnDefinitions>
                 <!--#region name and id-->
                 <TextBlock Text="Name:"/>
-                <TextBlock Grid.Column="1" Text="{Binding Name}"/>
+                <TextBlock Grid.Column="1" Text="{Binding BandName}"/>
                 <TextBlock Grid.Column="2" Text="Id:"/>
                 <TextBlock Grid.Column="3" Text="{Binding Id}"/>
                 <!--#endregion-->

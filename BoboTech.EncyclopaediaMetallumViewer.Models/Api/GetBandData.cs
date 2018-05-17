@@ -1,7 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using static System.FormattableString;
 
 namespace BoboTech.EncyclopaediaMetallumViewer.Models.Api
 {
@@ -28,6 +27,6 @@ namespace BoboTech.EncyclopaediaMetallumViewer.Models.Api
         [JsonProperty("current_lineup", NullValueHandling = NullValueHandling.Include)]
         public List<Member> CurrentLineup { get; set; }
 
-        public override string ToString() => Invariant($"{nameof(GetBandData)} ({Id} - {_instanceId:N}): {nameof(BandName)} - {BandName}, {nameof(Discography)} - {Discography?.Count ?? 0:d}");
+        public override string ToString() => $"{nameof(GetBandData)} ({Id} - {_instanceId:N}): {nameof(BandName)} - {BandName}, {nameof(Discography)} - {Discography?.Count ?? 0}";
     }
 }

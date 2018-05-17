@@ -28,11 +28,7 @@
                     <TextBlock Style="{StaticResource buttonText}">Search</TextBlock>
                 </Button>
             </Grid>
-            <ListView Grid.Row="2" Margin="3" ItemsSource="{Binding Bands}" SelectedItem="{Binding SelectedBand}" Style="{StaticResource ListViewStretchItem}">
-                <dxmvvm:Interaction.Behaviors>
-                    <dxmvvm:EventToCommand EventName="MouseDoubleClick" Command="{Binding ViewBandCommand}"/>
-                </dxmvvm:Interaction.Behaviors>
-            </ListView>
+            <ListView Grid.Row="2" Margin="3" ItemsSource="{Binding Bands}" SelectedItem="{Binding SelectedBand}" Style="{StaticResource ListViewStretchItem}"/>
             <fragments:Footer Grid.Row="3"/>
         </Grid>
     </controls:BusyIndicator>
