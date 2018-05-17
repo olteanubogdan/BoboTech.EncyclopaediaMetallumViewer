@@ -25,6 +25,7 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
@@ -62,13 +63,20 @@
                 <TextBlock Grid.Row="4" Grid.Column="2" Text="Years active:"/>
                 <TextBlock Grid.Row="4" Grid.Column="3" Text="{Binding YearsActive}"/>
                 <!--#endregion-->
+                <!--#region Bio-->
+                <TextBlock Grid.Row="5" Text="Bio:"/>
+                <TextBox Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="3" MaxHeight="200" TextWrapping="Wrap" Text="{Binding Bio}" VerticalScrollBarVisibility="Auto" IsReadOnly="True"/>
+                <!--<ScrollViewer Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="3" MaxHeight="50">
+                    <TextBlock Text="{Binding Bio}"/>
+                </ScrollViewer>-->
+                <!--#endregion-->
             </Grid>
             <TabControl Grid.Row="1">
                 <TabItem Header="Discography">
-                    <ListView ItemsSource="{Binding Discography}" SelectedItem="{Binding SelectedAlbum}" Style="{StaticResource ListViewStretchItem}"/>
+                    <ListView ItemsSource="{Binding Discography}" SelectedItem="{Binding SelectedAlbum}"/>
                 </TabItem>
                 <TabItem Header="Current lineup">
-                    <ListView ItemsSource="{Binding CurrentLineup}" SelectedItem="{Binding SelectedMember}" Style="{StaticResource ListViewStretchItem}"/>
+                    <ListView ItemsSource="{Binding CurrentLineup}" SelectedItem="{Binding SelectedMember}"/>
                 </TabItem>
             </TabControl>
             <fragments:Footer Grid.Row="2"/>

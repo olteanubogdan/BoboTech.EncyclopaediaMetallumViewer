@@ -58,10 +58,10 @@
             </Grid>
             <TabControl Grid.Row="1">
                 <TabItem Header="Songs">
-                    <ListView ItemsSource="{Binding Songs}" Style="{StaticResource ListViewStretchItem}"/>
+                    <ListView ItemsSource="{Binding Songs}"/>
                 </TabItem>
                 <TabItem Header="Personnel">
-                    <ListView ItemsSource="{Binding Personnel}" Style="{StaticResource ListViewStretchItem}"/>
+                    <ListView ItemsSource="{Binding Personnel}"/>
                 </TabItem>
             </TabControl>
             <fragments:Footer Grid.Row="2"/>

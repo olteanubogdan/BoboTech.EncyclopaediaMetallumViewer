@@ -28,7 +28,7 @@
                     <TextBlock Style="{StaticResource buttonText}">Search</TextBlock>
                 </Button>
             </Grid>
-            <ListView Grid.Row="2" Margin="3" ItemsSource="{Binding Bands}" SelectedItem="{Binding SelectedBand}" Style="{StaticResource ListViewStretchItem}"/>
+            <ListView Grid.Row="2" Margin="3" ItemsSource="{Binding Bands}" SelectedItem="{Binding SelectedBand}"/>
             <fragments:Footer Grid.Row="3"/>
         </Grid>
     </controls:BusyIndicator>
