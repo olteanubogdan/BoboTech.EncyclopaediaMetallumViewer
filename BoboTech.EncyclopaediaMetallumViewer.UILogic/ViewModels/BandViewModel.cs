@@ -68,12 +68,6 @@ namespace BoboTech.EncyclopaediaMetallumViewer.UILogic.ViewModels
                 band?.Data?.To(this);
                 band?.Data?.Details?.To(this);
 
-                if ((band?.Data?.Discography?.Count ?? 0) > 0)
-                    band.Data.Discography.ForEach(Discography.Add);
-
-                if ((band?.Data?.CurrentLineup?.Count ?? 0) > 0)
-                    band.Data.CurrentLineup.ForEach(CurrentLineup.Add);
-
                 DataIsLoaded = true;
             }
             catch (Exception ex)

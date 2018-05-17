@@ -55,12 +55,6 @@ namespace BoboTech.EncyclopaediaMetallumViewer.UILogic.ViewModels
                 (album as BaseResponse)?.To(this as BaseViewModel);
                 album?.Data?.Album?.To(this);
 
-                if ((album?.Data?.Album?.Songs?.Count ?? 0) > 0)
-                    album.Data.Album.Songs.ForEach(Songs.Add);
-
-                if ((album?.Data?.Album?.Personnel?.Count ?? 0) > 0)
-                    album.Data.Album.Personnel.ForEach(Personnel.Add);
-
                 DataIsLoaded = true;
             }
             catch (Exception ex)
