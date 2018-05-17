@@ -52,7 +52,7 @@ namespace BoboTech.EncyclopaediaMetallumViewer.UILogic.ViewModels
                 var searchBand = await DataService.SearchBandAsync(BandNameToSearch);
                 debug($"No. of bands found: {searchBand?.Data?.SearchResults?.Count ?? 0}");
                 (searchBand?.Data?.SearchResults ?? new List<Band>()).ForEach(Bands.Add);
-                searchBand.To(this);
+                (searchBand as BaseResponse).To(this as BaseViewModel);
                 IsBusy = false;
             }
             catch (Exception ex)

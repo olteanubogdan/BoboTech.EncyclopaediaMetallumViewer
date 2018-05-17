@@ -49,6 +49,7 @@
     <Compile Include="Api\AlbumDetails.cs" />
     <Compile Include="Api\Band.cs" />
     <Compile Include="Api\BandDetails.cs" />
+    <Compile Include="Api\BaseResponse.cs" />
     <Compile Include="Api\Donation.cs" />
     <Compile Include="Api\GetAlbumData.cs" />
     <Compile Include="Api\GetAlbumResponse.cs" />

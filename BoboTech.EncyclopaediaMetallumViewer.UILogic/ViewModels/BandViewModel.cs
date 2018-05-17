@@ -64,7 +64,7 @@ namespace BoboTech.EncyclopaediaMetallumViewer.UILogic.ViewModels
                 CurrentLineup.Clear();
                 var band = await Services.DataService.GetBandAsync(Id);
                 IsBusy = false;
-                band?.To(this);
+                (band as BaseResponse)?.To(this as BaseViewModel);
                 band?.Data?.To(this);
                 band?.Data?.Details?.To(this);
 

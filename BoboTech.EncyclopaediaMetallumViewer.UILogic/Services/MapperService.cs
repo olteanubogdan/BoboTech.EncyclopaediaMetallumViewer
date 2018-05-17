@@ -36,50 +36,43 @@ namespace BoboTech.EncyclopaediaMetallumViewer.UILogic.Services
         {
             var config = new MapperConfiguration(cfg =>
             {
+                #region BaseViewModel
+
+                cfg.CreateMap<BaseResponse, BaseViewModel>()
+                    .ForMember(x => x.EMApiDonationMessage, opt => opt.MapFrom(y => y.Donation == null ? string.Empty : y.Donation.Message))
+                    .ForMember(x => x.EMApiDonationUrl, opt => opt.MapFrom(y => y.Donation == null ? string.Empty : y.Donation.DonationUrl))
+                    .ForMember(x => x.EMApiCallStatus, opt => opt.MapFrom(y => y.Status))
+                    .ForMember(x => x.EMApiCallCode, opt => opt.MapFrom(y => y.Code))
+                    .ForMember(x => x.EMApiCallMessage, opt => opt.MapFrom(y => y.Message))
+                    .ForMember(x => x.EMApiCallHash, opt => opt.MapFrom(y => y.Hash))
+                    .ForAllOtherMembers(opt => opt.Ignore());
+
+                #endregion
+
+                #region BandViewModel
+
                 cfg.CreateMap<Band, BandViewModel>()
                     .ConstructUsing(x => ViewModelSource.Create<BandViewModel>())
                     .ForMember(x => x.Id, opt => opt.MapFrom(y => y.Id))
                     .ForAllOtherMembers(opt => opt.Ignore());
-                cfg.CreateMap<SearchBandResponse, SearchBandViewModel>()
-                    .ForMember(x => x.EMApiDonationMessage, opt => opt.MapFrom(y => y.Donation == null ? string.Empty : y.Donation.Message))
-                    .ForMember(x => x.EMApiDonationUrl, opt => opt.MapFrom(y => y.Donation == null ? string.Empty : y.Donation.DonationUrl))
-                    .ForMember(x => x.EMApiCallStatus, opt => opt.MapFrom(y => y.Status))
-                    .ForMember(x => x.EMApiCallCode, opt => opt.MapFrom(y => y.Code))
-                    .ForMember(x => x.EMApiCallMessage, opt => opt.MapFrom(y => y.Message))
-                    .ForMember(x => x.EMApiCallHash, opt => opt.MapFrom(y => y.Hash))
-                    .ForAllOtherMembers(opt => opt.Ignore());
-                cfg.CreateMap<GetBandResponse, BandViewModel>()
-                    .ForMember(x => x.EMApiDonationMessage, opt => opt.MapFrom(y => y.Donation == null ? string.Empty : y.Donation.Message))
-                    .ForMember(x => x.EMApiDonationUrl, opt => opt.MapFrom(y => y.Donation == null ? string.Empty : y.Donation.DonationUrl))
-                    .ForMember(x => x.EMApiCallStatus, opt => opt.MapFrom(y => y.Status))
-                    .ForMember(x => x.EMApiCallCode, opt => opt.MapFrom(y => y.Code))
-                    .ForMember(x => x.EMApiCallMessage, opt => opt.MapFrom(y => y.Message))
-                    .ForMember(x => x.EMApiCallHash, opt => opt.MapFrom(y => y.Hash))
-                    .ForAllOtherMembers(opt => opt.Ignore());
+
                 cfg.CreateMap<GetBandData, BandViewModel>(MemberList.None);
                 cfg.CreateMap<BandDetails, BandViewModel>(MemberList.None);
+
+                #endregion
+
+                #region AlbumViewModel
+
                 cfg.CreateMap<Album, AlbumViewModel>()
                     .ConstructUsing(x => ViewModelSource.Create<AlbumViewModel>())
                     .ForMember(x => x.Id, opt => opt.MapFrom(y => y.Id))
                     .ForAllOtherMembers(opt => opt.Ignore());
-                cfg.CreateMap<GetAlbumResponse, AlbumViewModel>()
-                    .ForMember(x => x.EMApiDonationMessage, opt => opt.MapFrom(y => y.Donation == null ? string.Empty : y.Donation.Message))
-                    .ForMember(x => x.EMApiDonationUrl, opt => opt.MapFrom(y => y.Donation == null ? string.Empty : y.Donation.DonationUrl))
-                    .ForMember(x => x.EMApiCallStatus, opt => opt.MapFrom(y => y.Status))
-                    .ForMember(x => x.EMApiCallCode, opt => opt.MapFrom(y => y.Code))
-                    .ForMember(x => x.EMApiCallMessage, opt => opt.MapFrom(y => y.Message))
-                    .ForMember(x => x.EMApiCallHash, opt => opt.MapFrom(y => y.Hash))
-                    //.ForMember(x => x.Title, opt => opt.MapFrom(y => y.Data == null || y.Data.Album == null ? string.Empty : y.Data.Album.Title))
-                    //.ForMember(x => x.AlbumCover, opt => opt.MapFrom(y => y.Data == null || y.Data.Album == null ? string.Empty : y.Data.Album.AlbumCover))
-                    //.ForMember(x => x.AlbumType, opt => opt.MapFrom(y => y.Data == null || y.Data.Album == null ? string.Empty : y.Data.Album.AlbumType))
-                    //.ForMember(x => x.ReleaseDate, opt => opt.MapFrom(y => y.Data == null || y.Data.Album == null ? string.Empty : y.Data.Album.ReleaseDate))
-                    //.ForMember(x => x.CatalogId, opt => opt.MapFrom(y => y.Data == null || y.Data.Album == null ? string.Empty : y.Data.Album.CatalogId))
-                    //.ForMember(x => x.Label, opt => opt.MapFrom(y => y.Data == null || y.Data.Album == null ? string.Empty : y.Data.Album.Label))
-                    //.ForMember(x => x.Format, opt => opt.MapFrom(y => y.Data == null || y.Data.Album == null ? string.Empty : y.Data.Album.Format))
-                    //.ForMember(x => x.Reviews, opt => opt.MapFrom(y => y.Data == null || y.Data.Album == null ? string.Empty : y.Data.Album.Reviews))
-                    .ForAllOtherMembers(opt => opt.Ignore());
+
                 cfg.CreateMap<AlbumDetails, AlbumViewModel>(MemberList.None);
+
+                #endregion
             });
+
             Mapper = config.CreateMapper();
             Mapper.ConfigurationProvider.AssertConfigurationIsValid();
         }

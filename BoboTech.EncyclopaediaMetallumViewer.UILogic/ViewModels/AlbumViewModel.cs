@@ -52,7 +52,7 @@ namespace BoboTech.EncyclopaediaMetallumViewer.UILogic.ViewModels
                 Personnel.Clear();
                 var album = await Services.DataService.GetAlbumAsync(Id);
                 IsBusy = false;
-                album?.To(this);
+                (album as BaseResponse)?.To(this as BaseViewModel);
                 album?.Data?.Album?.To(this);
 
                 if ((album?.Data?.Album?.Songs?.Count ?? 0) > 0)
