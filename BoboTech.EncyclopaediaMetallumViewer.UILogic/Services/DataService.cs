@@ -27,7 +27,7 @@ namespace BoboTech.EncyclopaediaMetallumViewer.UILogic.Services
             }
         }
 
-        public static Task<SearchBandResponse> SearchBandAsync(string bandName) => GetAsync<SearchBandResponse>($"/search/band_name/{bandName}");
+        public static Task<SearchBandResponse> SearchBandAsync(string bandName) => GetAsync<SearchBandResponse>($"/search/band_name/{bandName.Trim()}");
 
         public static Task<GetBandResponse> GetBandAsync(long id) => GetAsync<GetBandResponse>($"/band/{id}");
 

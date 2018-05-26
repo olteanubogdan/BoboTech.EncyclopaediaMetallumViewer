@@ -16,8 +16,12 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             <TextBlock VerticalAlignment="Center" Text="Band name:"/>
-            <TextBox VerticalAlignment="Center" Grid.Column="1" Text="{Binding BandNameToSearch}"/>
-            <Button VerticalAlignment="Center" Grid.Column="2" Command="{Binding SearchBandAsyncCommand, IsAsync=True}">
+            <TextBox VerticalAlignment="Center" Grid.Column="1" Text="{Binding BandNameToSearch, UpdateSourceTrigger=PropertyChanged}">
+                <dxmvvm:Interaction.Behaviors>
+                    <dxmvvm:KeyToCommand KeyGesture="Enter" Command="{Binding SearchBandAsyncCommand}"/>
+                </dxmvvm:Interaction.Behaviors>
+            </TextBox>
+            <Button VerticalAlignment="Center" Grid.Column="2" Command="{Binding SearchBandAsyncCommand}">
                 <TextBlock Style="{StaticResource buttonText}">Search</TextBlock>
             </Button>
         </Grid>

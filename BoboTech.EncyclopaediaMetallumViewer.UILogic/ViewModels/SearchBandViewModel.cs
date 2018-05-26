@@ -43,6 +43,10 @@ namespace BoboTech.EncyclopaediaMetallumViewer.UILogic.ViewModels
         {
             var caller = $"{nameof(SearchBandViewModel)}.{nameof(SearchBandAsync)}";
             var debug = new Action<string>(x => Logger.Log.Debug(x, caller));
+
+            if (string.IsNullOrWhiteSpace(BandNameToSearch))
+                return;
+
             try
             {
                 BusyStatus = "Searching ...";
