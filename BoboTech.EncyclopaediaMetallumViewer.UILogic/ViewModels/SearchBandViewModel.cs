@@ -6,6 +6,7 @@ using DevExpress.Mvvm;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Threading;
 using System.Threading.Tasks;
 using static System.FormattableString;
 
@@ -22,8 +23,6 @@ namespace BoboTech.EncyclopaediaMetallumViewer.UILogic.ViewModels
         public virtual object SelectedBand { get; set; }
 
         public virtual string TestBusyLabel { get; set; } = "Test busy";
-
-        public virtual string TestResizeLabel { get; set; } = "Test resize";
 
         #endregion
 
@@ -80,12 +79,6 @@ namespace BoboTech.EncyclopaediaMetallumViewer.UILogic.ViewModels
             await Task.Delay(1000);
             BusyStatus = "Done.";
             IsBusy = false;
-        }
-
-        [GenerateButton(Order = 1, BindCommandTo = "TestResizeCommand", BindTextTo = nameof(TestResizeLabel))]
-        public void TestResize()
-        {
-            EMApiCallMessage = "Some long test that, hopefully, should resize the content of Encyclopaedia Metallum API call message.";
         }
 
         public override string ToString() => $"{nameof(SearchBandViewModel)} ({_instanceId:N}): {nameof(BandNameToSearch)} - {BandNameToSearch}, {nameof(EMApiCallStatus)} - {EMApiCallStatus}";

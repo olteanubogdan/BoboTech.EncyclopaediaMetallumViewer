@@ -19,10 +19,7 @@ namespace BoboTech.EncyclopaediaMetallumViewer.UILogic.Services
                 var response = await client.GetAsync(new Uri($"{Settings.EncyclopaediaMetallumApiProxy.BaseUrl}{query}"));
 
                 if (!response.IsSuccessStatusCode)
-                    if (response.Headers.Contains("ErrorId"))
-                        throw new Exception($"API proxy failed with error id {response.Headers.GetValues("ErrorId").FirstOrDefault()}.");
-                    else
-                        throw new Exception($"API proxy failed with status code {response.StatusCode} and reason '{response.ReasonPhrase}'.");
+                    throw new Exception($"API proxy failed with status code {(int)response.StatusCode} and reason phrase '{response.ReasonPhrase}'.{(response.Headers.Contains("ErrorId") ? $"{Environment.NewLine}Server error id is {response.Headers.GetValues("ErrorId").FirstOrDefault()}." : string.Empty)}{(response.Headers.Contains("ExceptionMessage") ? $"{Environment.NewLine}Server exception message is '{response.Headers.GetValues("ExceptionMessage").FirstOrDefault()}'." : string.Empty)}");
 
                 await response.Content.CopyToAsync(memoryStream);
                 await memoryStream.SaveForDebugAsync("json");

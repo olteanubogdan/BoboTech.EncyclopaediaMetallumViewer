@@ -20,11 +20,11 @@ namespace BoboTech.EncyclopaediaMetallumViewer.Fragments
 
         public Footer()
         {
-            Loaded += GeneratedButtonsLoaded;
+            Loaded += FooterLoaded;
             InitializeComponent();
         }
 
-        private void GeneratedButtonsLoaded(object sender, RoutedEventArgs e)
+        private void FooterLoaded(object sender, RoutedEventArgs e)
         {
             if (DataContext is null)
                 return;

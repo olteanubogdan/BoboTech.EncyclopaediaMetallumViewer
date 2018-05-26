@@ -17,6 +17,7 @@ namespace BoboTech.EncyclopaediaMetallumApiProxy.Filters
             _logger.LogError($"ErrorId is {errorId}. {context.Exception}");
             context.ExceptionHandled = true;
             context.HttpContext.Response.Headers.Add("ErrorId", errorId);
+            context.HttpContext.Response.Headers.Add("ExceptionMessage", $"{context.Exception.Message}{(context.Exception.InnerException != null ? $" {context.Exception.InnerException.Message}" : string.Empty)}");
             context.HttpContext.Response.StatusCode = 500;
         }
     }

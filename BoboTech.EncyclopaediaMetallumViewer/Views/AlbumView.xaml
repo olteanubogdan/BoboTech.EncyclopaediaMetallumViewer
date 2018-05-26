@@ -11,52 +11,48 @@
     <dxmvvm:Interaction.Behaviors>
         <dxmvvm:EventToCommand EventName="Loaded" Command="{Binding ViewLoadedAsyncCommand}"/>
     </dxmvvm:Interaction.Behaviors>
-    <controls:BusyIndicator IsBusy="{Binding IsBusy}" Status="{Binding BusyStatus}">
-        <Grid>
+    <DockPanel>
+        <Grid DockPanel.Dock="Top">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <!--#region title and id-->
-                <TextBlock Text="Title:"/>
-                <TextBlock Grid.Column="1" Text="{Binding Title}"/>
-                <TextBlock Grid.Column="2" Text="Id:"/>
-                <TextBlock Grid.Column="3" Text="{Binding Id}"/>
-                <!--#endregion-->
-                <!--#region type and label-->
-                <TextBlock Grid.Row="1" Text="Type:"/>
-                <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding AlbumType}"/>
-                <TextBlock Grid.Row="1" Grid.Column="2" Text="Label:"/>
-                <TextBlock Grid.Row="1" Grid.Column="3" Text="{Binding Label}"/>
-                <!--#endregion-->
-                <!--#region release date and format-->
-                <TextBlock Grid.Row="2" Text="Release date:"/>
-                <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding ReleaseDate}"/>
-                <TextBlock Grid.Row="2" Grid.Column="2" Text="Format:"/>
-                <TextBlock Grid.Row="2" Grid.Column="3" Text="{Binding Format}"/>
-                <!--#endregion-->
-                <!--#region catalog id and reviews-->
-                <TextBlock Grid.Row="3" Text="Catalog id:"/>
-                <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding CatalogId}"/>
-                <TextBlock Grid.Row="3" Grid.Column="2" Text="Reviews:"/>
-                <TextBlock Grid.Row="3" Grid.Column="3" Text="{Binding Reviews}"/>
-                <!--#endregion-->
-            </Grid>
-            <TabControl Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <!--#region title and id-->
+            <TextBlock Text="Title:"/>
+            <TextBlock Grid.Column="1" Text="{Binding Title}"/>
+            <TextBlock Grid.Column="2" Text="Id:"/>
+            <TextBlock Grid.Column="3" Text="{Binding Id}"/>
+            <!--#endregion-->
+            <!--#region type and label-->
+            <TextBlock Grid.Row="1" Text="Type:"/>
+            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding AlbumType}"/>
+            <TextBlock Grid.Row="1" Grid.Column="2" Text="Label:"/>
+            <TextBlock Grid.Row="1" Grid.Column="3" Text="{Binding Label}"/>
+            <!--#endregion-->
+            <!--#region release date and format-->
+            <TextBlock Grid.Row="2" Text="Release date:"/>
+            <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding ReleaseDate}"/>
+            <TextBlock Grid.Row="2" Grid.Column="2" Text="Format:"/>
+            <TextBlock Grid.Row="2" Grid.Column="3" Text="{Binding Format}"/>
+            <!--#endregion-->
+            <!--#region catalog id and reviews-->
+            <TextBlock Grid.Row="3" Text="Catalog id:"/>
+            <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding CatalogId}"/>
+            <TextBlock Grid.Row="3" Grid.Column="2" Text="Reviews:"/>
+            <TextBlock Grid.Row="3" Grid.Column="3" Text="{Binding Reviews}"/>
+            <!--#endregion-->
+        </Grid>
+        <fragments:Footer DockPanel.Dock="Bottom"/>
+        <controls:ForceChildResizePanel>
+            <TabControl MinHeight="275">
                 <TabItem Header="Songs">
                     <ListView ItemsSource="{Binding Songs}"/>
                 </TabItem>
@@ -64,7 +60,6 @@
                     <ListView ItemsSource="{Binding Personnel}"/>
                 </TabItem>
             </TabControl>
-            <fragments:Footer Grid.Row="2"/>
-        </Grid>
-    </controls:BusyIndicator>
+        </controls:ForceChildResizePanel>
+    </DockPanel>
 </UserControl>

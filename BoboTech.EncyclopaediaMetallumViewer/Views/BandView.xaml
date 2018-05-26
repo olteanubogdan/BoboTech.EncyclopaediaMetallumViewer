@@ -11,67 +11,63 @@
     <dxmvvm:Interaction.Behaviors>
         <dxmvvm:EventToCommand EventName="Loaded" Command="{Binding ViewLoadedAsyncCommand}"/>
     </dxmvvm:Interaction.Behaviors>
-    <controls:BusyIndicator IsBusy="{Binding IsBusy}" Status="{Binding BusyStatus}">
-        <Grid>
+    <DockPanel>
+        <Grid DockPanel.Dock="Top">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <!--#region name and id-->
-                <TextBlock Text="Name:"/>
-                <TextBlock Grid.Column="1" Text="{Binding BandName}"/>
-                <TextBlock Grid.Column="2" Text="Id:"/>
-                <TextBlock Grid.Column="3" Text="{Binding Id}"/>
-                <!--#endregion-->
-                <!--#region Country of origin and Genre-->
-                <TextBlock Grid.Row="1" Text="Country of origin:"/>
-                <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding CountryOfOrigin}"/>
-                <TextBlock Grid.Row="1" Grid.Column="2" Text="Genre:"/>
-                <TextBlock Grid.Row="1" Grid.Column="3" Text="{Binding Genre}"/>
-                <!--#endregion-->
-                <!--#region Location and Lyrical themes-->
-                <TextBlock Grid.Row="2" Text="Location:"/>
-                <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Location}"/>
-                <TextBlock Grid.Row="2" Grid.Column="2" Text="Lyrical themes:"/>
-                <TextBlock Grid.Row="2" Grid.Column="3" Text="{Binding LyricalThemes}"/>
-                <!--#endregion-->
-                <!--#region Status and Last label-->
-                <TextBlock Grid.Row="3" Text="Status:"/>
-                <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding Status}"/>
-                <TextBlock Grid.Row="3" Grid.Column="2" Text="Last label:"/>
-                <TextBlock Grid.Row="3" Grid.Column="3" Text="{Binding CurrentLabel}"/>
-                <!--#endregion-->
-                <!--#region Formed in and Years active-->
-                <TextBlock Grid.Row="4" Text="Formed in:"/>
-                <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding FormedIn}"/>
-                <TextBlock Grid.Row="4" Grid.Column="2" Text="Years active:"/>
-                <TextBlock Grid.Row="4" Grid.Column="3" Text="{Binding YearsActive}"/>
-                <!--#endregion-->
-                <!--#region Bio-->
-                <TextBlock Grid.Row="5" Text="Bio:"/>
-                <TextBox Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="3" MaxHeight="200" TextWrapping="Wrap" Text="{Binding Bio}" VerticalScrollBarVisibility="Auto" IsReadOnly="True"/>
-                <!--<ScrollViewer Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="3" MaxHeight="50">
-                    <TextBlock Text="{Binding Bio}"/>
-                </ScrollViewer>-->
-                <!--#endregion-->
-            </Grid>
-            <TabControl Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <!--#region name and id-->
+            <TextBlock Text="Name:"/>
+            <TextBlock Grid.Column="1" Text="{Binding BandName}"/>
+            <TextBlock Grid.Column="2" Text="Id:"/>
+            <TextBlock Grid.Column="3" Text="{Binding Id}"/>
+            <!--#endregion-->
+            <!--#region Country of origin and Genre-->
+            <TextBlock Grid.Row="1" Text="Country of origin:"/>
+            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding CountryOfOrigin}"/>
+            <TextBlock Grid.Row="1" Grid.Column="2" Text="Genre:"/>
+            <TextBlock Grid.Row="1" Grid.Column="3" Text="{Binding Genre}"/>
+            <!--#endregion-->
+            <!--#region Location and Lyrical themes-->
+            <TextBlock Grid.Row="2" Text="Location:"/>
+            <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Location}"/>
+            <TextBlock Grid.Row="2" Grid.Column="2" Text="Lyrical themes:"/>
+            <TextBlock Grid.Row="2" Grid.Column="3" Text="{Binding LyricalThemes}"/>
+            <!--#endregion-->
+            <!--#region Status and Last label-->
+            <TextBlock Grid.Row="3" Text="Status:"/>
+            <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding Status}"/>
+            <TextBlock Grid.Row="3" Grid.Column="2" Text="Last label:"/>
+            <TextBlock Grid.Row="3" Grid.Column="3" Text="{Binding CurrentLabel}"/>
+            <!--#endregion-->
+            <!--#region Formed in and Years active-->
+            <TextBlock Grid.Row="4" Text="Formed in:"/>
+            <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding FormedIn}"/>
+            <TextBlock Grid.Row="4" Grid.Column="2" Text="Years active:"/>
+            <TextBlock Grid.Row="4" Grid.Column="3" Text="{Binding YearsActive}"/>
+            <!--#endregion-->
+            <!--#region Bio-->
+            <TextBlock Grid.Row="5" Text="Bio:"/>
+            <TextBox Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="3" MaxHeight="200" TextWrapping="Wrap" Text="{Binding Bio}" VerticalScrollBarVisibility="Auto" IsReadOnly="True"/>
+            <!--<ScrollViewer Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="3" MaxHeight="50">
+                <TextBlock Text="{Binding Bio}"/>
+            </ScrollViewer>-->
+            <!--#endregion-->
+        </Grid>
+        <fragments:Footer DockPanel.Dock="Bottom"/>
+        <controls:ForceChildResizePanel>
+            <TabControl MinHeight="275">
                 <TabItem Header="Discography">
                     <ListView ItemsSource="{Binding Discography}" SelectedItem="{Binding SelectedAlbum}"/>
                 </TabItem>
@@ -79,7 +75,6 @@
                     <ListView ItemsSource="{Binding CurrentLineup}" SelectedItem="{Binding SelectedMember}"/>
                 </TabItem>
             </TabControl>
-            <fragments:Footer Grid.Row="2"/>
-        </Grid>
-    </controls:BusyIndicator>
+        </controls:ForceChildResizePanel>
+    </DockPanel>
 </UserControl>

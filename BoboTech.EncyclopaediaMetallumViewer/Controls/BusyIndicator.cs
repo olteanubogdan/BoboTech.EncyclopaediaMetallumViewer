@@ -18,6 +18,7 @@ namespace BoboTech.EncyclopaediaMetallumViewer.Controls
         private OverlayAdorner _adorner = null;
         private const double _fadingTime = 0.25;
         private readonly Lazy<FrameworkElement> _defaultTemplate = new Lazy<FrameworkElement>(() => new Fragments.Busy());
+        private Guid _instanceId = Guid.NewGuid();
 
         #endregion
 
@@ -168,6 +169,8 @@ namespace BoboTech.EncyclopaediaMetallumViewer.Controls
 
             ShowOrHideAdorner();
         }
+
+        public override string ToString() => $"{nameof(BusyIndicator)} ({_instanceId:N})";
 
         #endregion
     }

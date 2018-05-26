@@ -6,6 +6,7 @@
         xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
         xmlns:services="clr-namespace:BoboTech.EncyclopaediaMetallumViewer.Services"
         xmlns:viewModels="clr-namespace:BoboTech.EncyclopaediaMetallumViewer.UILogic.ViewModels;assembly=BoboTech.EncyclopaediaMetallumViewer.UILogic"
+        xmlns:controls="clr-namespace:BoboTech.EncyclopaediaMetallumViewer.Controls"
         DataContext="{dxmvvm:ViewModelSource Type=viewModels:SearchBandViewModel}"
         mc:Ignorable="d"
         Title="{Binding WindowTitle}"
@@ -16,5 +17,10 @@
         <dxmvvm:MessageBoxService/>
         <services:HostService/>
     </dxmvvm:Interaction.Behaviors>
-    <ContentPresenter Content="{Binding}" Margin="0,10,0,0"/><!--set a 10px upper margin to accomodate the UI Debugging tools-->
+    <!--set a 10px upper margin to accomodate the UI Debugging tools-->
+    <controls:BusyIndicator Margin="0,10,0,0" IsBusy="{Binding IsBusy}" Status="{Binding BusyStatus}">
+        <ScrollViewer VerticalScrollBarVisibility="Auto" PanningMode="VerticalOnly" FocusVisualStyle="{x:Null}" CanContentScroll="True">
+            <ContentPresenter Content="{Binding}"/>
+        </ScrollViewer>
+    </controls:BusyIndicator>
 </Window>
