@@ -11,22 +11,22 @@
     </dxmvvm:Interaction.Behaviors>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
             <RowDefinition/>
-            <RowDefinition Height="Auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock Text="Name" Style="{StaticResource ListViewItemHeaderText}"/>
-        <TextBlock Grid.Row="1" Text="{Binding Name}" Style="{StaticResource ListViewItemText}"/>
-        <TextBlock Grid.Row="2" Text="Genre" Style="{StaticResource ListViewItemHeaderText}"/>
-        <TextBlock Grid.Row="3" Text="{Binding Genre}" Style="{StaticResource ListViewItemText}"/>
-        <TextBlock Grid.Column="1" Text="Id" Style="{StaticResource ListViewItemHeaderText}"/>
-        <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding Id}" Style="{StaticResource ListViewItemText}"/>
-        <TextBlock Grid.Column="1" Grid.Row="2" Text="From" Style="{StaticResource ListViewItemHeaderText}"/>
-        <TextBlock Grid.Column="1" Grid.Row="3" Text="{Binding Country}" Style="{StaticResource ListViewItemText}"/>
+        <TextBlock Text="Id" Style="{StaticResource ListViewItemHeaderText}"/>
+        <TextBlock Grid.Column="1" Text="Name" Style="{StaticResource ListViewItemHeaderText}"/>
+        <TextBlock Grid.Column="2" Text="Genre" Style="{StaticResource ListViewItemHeaderText}"/>
+        <TextBlock Grid.Column="3" Text="From" Style="{StaticResource ListViewItemHeaderText}"/>
+        <TextBlock Grid.Row="1" Text="{Binding Id}" Style="{StaticResource ListViewItemText}"/>
+        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Name}" Style="{StaticResource ListViewItemText}"/>
+        <TextBlock Grid.Row="1" Grid.Column="2" Text="{Binding Genre}" Style="{StaticResource ListViewItemText}"/>
+        <TextBlock Grid.Row="1" Grid.Column="3" Text="{Binding Country}" Style="{StaticResource ListViewItemText}"/>
     </Grid>
 </UserControl>

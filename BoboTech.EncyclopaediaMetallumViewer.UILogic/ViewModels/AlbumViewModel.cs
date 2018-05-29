@@ -43,7 +43,7 @@ namespace BoboTech.EncyclopaediaMetallumViewer.UILogic.ViewModels
             if (DataIsLoaded)
                 return;
 
-            var caller = $"{nameof(AlbumViewModel)}.{nameof(ViewLoadedAsync)}";
+            var caller = $"{nameof(AlbumViewModel)}({_instanceId:N}).{nameof(ViewLoadedAsync)}";
             try
             {
                 BusyStatus = "Getting data ...";

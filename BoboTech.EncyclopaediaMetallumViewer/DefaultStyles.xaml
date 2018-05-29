@@ -35,9 +35,11 @@
     </Style>
     <Style TargetType="TextBlock" x:Key="ListViewItemHeaderText">
         <Setter Property="FontSize" Value="10"/>
+        <Setter Property="Margin" Value="1,0,2,0"/>
     </Style>
     <Style TargetType="TextBlock" x:Key="ListViewItemText">
         <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="Margin" Value="1,0,2,0"/>
     </Style>
     <Style TargetType="TextBox">
         <Setter Property="Margin" Value="3"/>

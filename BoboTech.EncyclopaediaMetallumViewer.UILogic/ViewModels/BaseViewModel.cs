@@ -50,12 +50,12 @@ namespace BoboTech.EncyclopaediaMetallumViewer.UILogic.ViewModels
 
         #region Public methods (will be transformed to commands by ViewModelSource)
 
-        [GenerateButton(Order = -2, BindCommandTo = "GoBackCommand", BindTextTo = nameof(GoBackLabel))]
+        [GenerateButton(Order = -2)]
         public void GoBack() => HostService.GoBack();
 
         public bool CanGoBack() => HostService?.CanGoBack() ?? false;
 
-        [GenerateButton(Order = -1, BindCommandTo = "GoForwardCommand", BindTextTo = nameof(GoForwardLabel))]
+        [GenerateButton(Order = -1)]
         public void GoForward() => HostService.GoForward();
 
         public bool CanGoForward() => HostService?.CanGoForward() ?? false;

@@ -55,7 +55,7 @@ namespace BoboTech.EncyclopaediaMetallumViewer.UILogic.ViewModels
             if (DataIsLoaded)
                 return;
 
-            var caller = $"{nameof(BandViewModel)}.{nameof(ViewLoadedAsync)}";
+            var caller = $"{nameof(BandViewModel)}({_instanceId:N}).{nameof(ViewLoadedAsync)}";
             try
             {
                 BusyStatus = "Getting data ...";

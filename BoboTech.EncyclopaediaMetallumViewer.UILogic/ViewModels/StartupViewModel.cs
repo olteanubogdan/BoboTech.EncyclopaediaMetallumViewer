@@ -1,5 +1,6 @@
 ﻿using BoboTech.EncyclopaediaMetallumViewer.UILogic.Services;
 using DevExpress.Mvvm;
+using DevExpress.Mvvm.POCO;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
@@ -44,7 +45,7 @@ namespace BoboTech.EncyclopaediaMetallumViewer.UILogic.ViewModels
 
         public async Task ViewLoadedAsync()
         {
-            var caller = $"{nameof(StartupViewModel)}.{nameof(ViewLoadedAsync)}";
+            var caller = $"{nameof(StartupViewModel)}({_instanceId:N}).{nameof(ViewLoadedAsync)}";
             var debug = new Action<string>(x => Logger.Log.Debug(x, caller));
             try
             {
@@ -69,7 +70,7 @@ namespace BoboTech.EncyclopaediaMetallumViewer.UILogic.ViewModels
                 State = "App loaded.";
                 Progress = 100;
                 await Task.Delay(300);
-                HostService.ShowInitialView();
+                HostService.ShowViewInNewWindow(ViewModelSource.Create<SearchBandViewModel>());
                 HostService.Close();
             }
             catch (Exception ex)

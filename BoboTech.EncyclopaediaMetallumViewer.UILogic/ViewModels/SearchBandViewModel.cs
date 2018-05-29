@@ -22,7 +22,9 @@ namespace BoboTech.EncyclopaediaMetallumViewer.UILogic.ViewModels
 
         public virtual object SelectedBand { get; set; }
 
-        public virtual string TestBusyLabel { get; set; } = "Test busy";
+        public virtual string TestBusyAsyncLabel { get; set; } = "Test busy";
+
+        public virtual string LoadDummyDataLabel { get; set; } = "Load dummy data";
 
         #endregion
 
@@ -41,7 +43,7 @@ namespace BoboTech.EncyclopaediaMetallumViewer.UILogic.ViewModels
 
         public async Task SearchBandAsync()
         {
-            var caller = $"{nameof(SearchBandViewModel)}.{nameof(SearchBandAsync)}";
+            var caller = $"{nameof(SearchBandViewModel)}({_instanceId:N}).{nameof(SearchBandAsync)}";
             var debug = new Action<string>(x => Logger.Log.Debug(x, caller));
 
             if (string.IsNullOrWhiteSpace(BandNameToSearch))
@@ -73,7 +75,7 @@ namespace BoboTech.EncyclopaediaMetallumViewer.UILogic.ViewModels
                 HostService.ShowView(band.To<BandViewModel>());
         }
 
-        [GenerateButton(Order = 0, BindCommandTo = "TestBusyAsyncCommand", BindTextTo = nameof(TestBusyLabel))]
+        [GenerateButton(Order = 0)]
         public async Task TestBusyAsync()
         {
             BusyStatus = "Testing.";
@@ -83,6 +85,15 @@ namespace BoboTech.EncyclopaediaMetallumViewer.UILogic.ViewModels
             await Task.Delay(1000);
             BusyStatus = "Done.";
             IsBusy = false;
+        }
+
+        [GenerateButton(Order = 1)]
+        public void LoadDummyData()
+        {
+            Bands.Clear();
+            Bands.Add(new Band { Id = 1, Name = "Band 1", Genre = "Testing 123", Country = "Romania" });
+            Bands.Add(new Band { Id = 2, Name = "Murica is the best", Genre = "C", Country = "'murica" });
+            Bands.Add(new Band { Id = 3, Name = "Generic band name is so much wow generic", Genre = "Generic genre is generic", Country = "Generic country is generic" });
         }
 
         public override string ToString() => $"{nameof(SearchBandViewModel)} ({_instanceId:N}): {nameof(BandNameToSearch)} - {BandNameToSearch}, {nameof(EMApiCallStatus)} - {EMApiCallStatus}";

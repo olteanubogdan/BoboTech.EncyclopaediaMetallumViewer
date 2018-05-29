@@ -56,6 +56,9 @@
     <StartupObject>BoboTech.EncyclopaediaMetallumViewer.App</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BoboTech.Logger, Version=17.12.16155.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\BoboTech.Logger.17.12.16155\lib\net46\BoboTech.Logger.dll</HintPath>
+    </Reference>
     <Reference Include="DevExpress.Mvvm, Version=17.1.0.0, Culture=neutral, PublicKeyToken=382ad28f6ae31f30, processorArchitecture=MSIL">
       <HintPath>..\packages\DevExpressMvvm.17.1.6.0\lib\net40-client\DevExpress.Mvvm.dll</HintPath>
     </Reference>
@@ -65,10 +68,17 @@
     <Reference Include="FontAwesome.WPF, Version=4.7.0.37774, Culture=neutral, PublicKeyToken=0758b07a11a4f466, processorArchitecture=MSIL">
       <HintPath>..\packages\FontAwesome.WPF.4.7.0.9\lib\net40\FontAwesome.WPF.dll</HintPath>
     </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.5.5\lib\net45\NLog.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />

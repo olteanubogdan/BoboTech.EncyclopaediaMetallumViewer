@@ -1,5 +1,6 @@
 ﻿using BoboTech.EncyclopaediaMetallumViewer.Common.Attributes;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Windows;
@@ -13,6 +14,7 @@ namespace BoboTech.EncyclopaediaMetallumViewer.Fragments
         #region Fields
 
         Guid _instanceId = Guid.NewGuid();
+        List<Button> _generatedButtons = new List<Button>();
 
         #endregion
 
@@ -20,33 +22,37 @@ namespace BoboTech.EncyclopaediaMetallumViewer.Fragments
 
         public Footer()
         {
-            Loaded += FooterLoaded;
             InitializeComponent();
+            DataContextChanged += FooterDataContextChanged;
         }
 
-        private void FooterLoaded(object sender, RoutedEventArgs e)
+        private void FooterDataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
+            _generatedButtons.ForEach(button => ButtonsPanel.Children.Remove(button));
+            _generatedButtons.Clear();
+
             if (DataContext is null)
                 return;
 
             DataContext
                 .GetType()
                 .GetMethods()
-                .Select(x => x.GetCustomAttribute<GenerateButtonAttribute>())
-                .Where(x => x != null)
-                .OrderBy(x => x.Order)
+                .Select(methodInfo => new { Attribute = methodInfo.GetCustomAttribute<GenerateButtonAttribute>(), MethodInfo = methodInfo })
+                .Where(x => x.Attribute != null)
+                .OrderBy(x => x.Attribute.Order)
                 .ToList()
-                .ForEach(generateButtonAttribute =>
+                .ForEach(x =>
                 {
                     var textBlock = new TextBlock { Style = (Style)FindResource("buttonText") };
 
-                    textBlock.SetBinding(TextBlock.TextProperty, new Binding(generateButtonAttribute.BindTextTo));
+                    textBlock.SetBinding(TextBlock.TextProperty, new Binding(string.IsNullOrWhiteSpace(x.Attribute.BindTextTo) ? $"{x.MethodInfo.Name}Label" : x.Attribute.BindTextTo));
 
                     var button = new Button { Content = textBlock };
 
-                    button.SetBinding(Button.CommandProperty, new Binding(generateButtonAttribute.BindCommandTo));
+                    button.SetBinding(Button.CommandProperty, new Binding(string.IsNullOrWhiteSpace(x.Attribute.BindCommandTo) ? $"{x.MethodInfo.Name}Command" : x.Attribute.BindCommandTo));
 
                     ButtonsPanel.Children.Add(button);
+                    _generatedButtons.Add(button);
                 });
         }
 

@@ -23,8 +23,6 @@ namespace BoboTech.EncyclopaediaMetallumViewer.Services
                 window.Close();
         }
 
-        public void ShowInitialView() => new ViewHost().Show();
-
         public void ShowView(object viewModel)
         {
             if (viewModel is ISupportParentViewModel supportParent)
@@ -32,6 +30,8 @@ namespace BoboTech.EncyclopaediaMetallumViewer.Services
 
             AssociatedObject.DataContext = viewModel;
         }
+
+        public void ShowViewInNewWindow(object viewModel) => new ViewHost { DataContext = viewModel }.Show();
 
         public void GoBack()
         {

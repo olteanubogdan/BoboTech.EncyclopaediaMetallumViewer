@@ -4,9 +4,9 @@
     {
         void Close();
 
-        void ShowInitialView();
-
         void ShowView(object viewModel);
+
+        void ShowViewInNewWindow(object viewModel);
 
         void GoBack();
 
