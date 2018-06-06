@@ -11,22 +11,22 @@
     </dxmvvm:Interaction.Behaviors>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
             <RowDefinition/>
-            <RowDefinition Height="Auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
+            <ColumnDefinition Width="7*"/>
+            <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <TextBlock Text="Name" Style="{StaticResource ListViewItemHeaderText}"/>
-        <TextBlock Grid.Row="1" Text="{Binding Title}" Style="{StaticResource ListViewItemText}"/>
-        <TextBlock Grid.Row="2" Text="Year" Style="{StaticResource ListViewItemHeaderText}"/>
-        <TextBlock Grid.Row="3" Text="{Binding Year}" Style="{StaticResource ListViewItemText}"/>
-        <TextBlock Grid.Column="1" Text="Id" Style="{StaticResource ListViewItemHeaderText}"/>
-        <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding Id}" Style="{StaticResource ListViewItemText}"/>
-        <TextBlock Grid.Column="1" Grid.Row="2" Text="Type" Style="{StaticResource ListViewItemHeaderText}"/>
-        <TextBlock Grid.Column="1" Grid.Row="3" Text="{Binding AlbumType}" Style="{StaticResource ListViewItemText}"/>
+        <TextBlock Text="Id" Style="{StaticResource ListViewItemHeaderText}"/>
+        <TextBlock Grid.Column="1" Text="Name" Style="{StaticResource ListViewItemHeaderText}"/>
+        <TextBlock Grid.Column="2" Text="Year" Style="{StaticResource ListViewItemHeaderText}"/>
+        <TextBlock Grid.Column="3" Text="Type" Style="{StaticResource ListViewItemHeaderText}"/>
+        <TextBlock Grid.Row="1" Text="{Binding Id}" Style="{StaticResource ListViewItemText}"/>
+        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Title}" Style="{StaticResource ListViewItemText}"/>
+        <TextBlock Grid.Row="1" Grid.Column="2" Text="{Binding Year}" Style="{StaticResource ListViewItemText}"/>
+        <TextBlock Grid.Row="1" Grid.Column="3" Text="{Binding AlbumType}" Style="{StaticResource ListViewItemText}"/>
     </Grid>
 </UserControl>

@@ -7,22 +7,22 @@
              d:DesignHeight="60" d:DesignWidth="750">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
             <RowDefinition/>
-            <RowDefinition Height="Auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
-            <ColumnDefinition/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock Text="Name" Style="{StaticResource ListViewItemHeaderText}"/>
-        <TextBlock Grid.Row="1" Text="{Binding Name}" Style="{StaticResource ListViewItemText}"/>
-        <TextBlock Grid.Row="2" Text="Instrument" Style="{StaticResource ListViewItemHeaderText}"/>
-        <TextBlock Grid.Row="3" Text="{Binding Instrument}" Style="{StaticResource ListViewItemText}"/>
-        <TextBlock Grid.Column="1" Text="Id" Style="{StaticResource ListViewItemHeaderText}"/>
-        <TextBlock Grid.Column="1" Grid.Row="1" Text="{Binding Id}" Style="{StaticResource ListViewItemText}"/>
-        <TextBlock Grid.Column="1" Grid.Row="2" Text="Years" Style="{StaticResource ListViewItemHeaderText}"/>
-        <TextBlock Grid.Column="1" Grid.Row="3" Text="{Binding Years}" Style="{StaticResource ListViewItemText}"/>
+        <TextBlock Text="Id" Style="{StaticResource ListViewItemHeaderText}"/>
+        <TextBlock Grid.Column="1" Text="Name" Style="{StaticResource ListViewItemHeaderText}"/>
+        <TextBlock Grid.Column="2" Text="Instrument" Style="{StaticResource ListViewItemHeaderText}"/>
+        <TextBlock Grid.Column="3" Text="Years" Style="{StaticResource ListViewItemHeaderText}"/>
+        <TextBlock Grid.Row="1" Text="{Binding Id}" Style="{StaticResource ListViewItemText}"/>
+        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Name}" Style="{StaticResource ListViewItemText}"/>
+        <TextBlock Grid.Row="1" Grid.Column="2" Text="{Binding Instrument}" Style="{StaticResource ListViewItemText}"/>
+        <TextBlock Grid.Row="1" Grid.Column="3" Text="{Binding Years}" Style="{StaticResource ListViewItemText}"/>
     </Grid>
 </UserControl>
