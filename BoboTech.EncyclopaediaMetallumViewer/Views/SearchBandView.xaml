@@ -11,19 +11,15 @@
     <DockPanel>
         <Grid DockPanel.Dock="Top">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <TextBlock VerticalAlignment="Center" Text="Band name:"/>
-            <TextBox VerticalAlignment="Center" Grid.Column="1" Text="{Binding BandNameToSearch, UpdateSourceTrigger=PropertyChanged}">
+            <controls:TextEdit Label="Band name to search" Value="{Binding BandNameToSearch}">
                 <dxmvvm:Interaction.Behaviors>
                     <dxmvvm:KeyToCommand KeyGesture="Enter" Command="{Binding SearchBandAsyncCommand}"/>
                 </dxmvvm:Interaction.Behaviors>
-            </TextBox>
-            <Button VerticalAlignment="Center" Grid.Column="2" Command="{Binding SearchBandAsyncCommand}">
-                <TextBlock Style="{StaticResource buttonText}">Search</TextBlock>
-            </Button>
+            </controls:TextEdit>
+            <controls:LabeledButton Grid.Column="1" Command="{Binding SearchBandAsyncCommand}" Label="Search"/>
         </Grid>
         <fragments:Footer DockPanel.Dock="Bottom"/>
         <controls:ForceChildResizePanel>

@@ -6,7 +6,6 @@ using DevExpress.Mvvm;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Threading;
 using System.Threading.Tasks;
 using static System.FormattableString;
 
@@ -25,17 +24,6 @@ namespace BoboTech.EncyclopaediaMetallumViewer.UILogic.ViewModels
         public virtual string TestBusyAsyncLabel { get; set; } = "Test busy";
 
         public virtual string LoadDummyDataLabel { get; set; } = "Load dummy data";
-
-        #endregion
-
-        #region Constructor
-
-        //public SearchBandViewModel()
-        //{
-        //    if (!Debugger.IsAttached)
-        //        return;
-        //    Enumerable.Range(0, 20).ToList().ForEach(x => Bands.Add(new Band { Id = x, Country = $"Contry {x}", Genre = $"Genre {x}", Name = $"Band {x}" }));
-        //}
 
         #endregion
 
@@ -93,7 +81,7 @@ namespace BoboTech.EncyclopaediaMetallumViewer.UILogic.ViewModels
             Bands.Clear();
             Bands.Add(new Band { Id = 1, Name = "Band 1", Genre = "Testing 123", Country = "Romania" });
             Bands.Add(new Band { Id = 2, Name = "Murica is the best", Genre = "C", Country = "'murica" });
-            Bands.Add(new Band { Id = 3, Name = "Generic band name is so much wow generic", Genre = "Generic genre is generic", Country = "Generic country is generic" });
+            Bands.Add(new Band { Id = 3, Name = "Generic band name is so much generic wow", Genre = "Generic genre is generic", Country = "Generic country is generic" });
         }
 
         public override string ToString() => $"{nameof(SearchBandViewModel)} ({_instanceId:N}): {nameof(BandNameToSearch)} - {BandNameToSearch}, {nameof(EMApiCallStatus)} - {EMApiCallStatus}";

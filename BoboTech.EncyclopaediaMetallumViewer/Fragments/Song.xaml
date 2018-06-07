@@ -10,7 +10,7 @@
             <ColumnDefinition/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
-        <TextBlock Text="{Binding Title}"/>
-        <TextBlock Grid.Column="1" Text="{Binding Length}"/>
+        <TextBlock Text="{Binding Title}" Margin="3"/>
+        <TextBlock Grid.Column="1" Text="{Binding Length}" Margin="3"/>
     </Grid>
 </UserControl>

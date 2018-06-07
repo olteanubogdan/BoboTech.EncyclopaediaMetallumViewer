@@ -100,6 +100,10 @@
     <Compile Include="Behaviours\ForwardMouseWheelBehavior.cs" />
     <Compile Include="Controls\BusyIndicator.cs" />
     <Compile Include="Controls\ForceChildResizePanel.cs" />
+    <Compile Include="Controls\LabeledButton.cs" />
+    <Compile Include="Controls\TextEdit.xaml.cs">
+      <DependentUpon>TextEdit.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Fragments\Album.xaml.cs">
       <DependentUpon>Album.xaml</DependentUpon>
     </Compile>
@@ -135,6 +139,10 @@
     <Compile Include="Views\SearchBandView.xaml.cs">
       <DependentUpon>SearchBandView.xaml</DependentUpon>
     </Compile>
+    <Page Include="Controls\TextEdit.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="DataTemplates.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -1,10 +1,12 @@
 ﻿using BoboTech.EncyclopaediaMetallumViewer.Common.Attributes;
+using BoboTech.EncyclopaediaMetallumViewer.Controls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 
 namespace BoboTech.EncyclopaediaMetallumViewer.Fragments
@@ -14,7 +16,7 @@ namespace BoboTech.EncyclopaediaMetallumViewer.Fragments
         #region Fields
 
         Guid _instanceId = Guid.NewGuid();
-        List<Button> _generatedButtons = new List<Button>();
+        List<LabeledButton> _generatedButtons = new List<LabeledButton>();
 
         #endregion
 
@@ -43,14 +45,9 @@ namespace BoboTech.EncyclopaediaMetallumViewer.Fragments
                 .ToList()
                 .ForEach(x =>
                 {
-                    var textBlock = new TextBlock { Style = (Style)FindResource("buttonText") };
-
-                    textBlock.SetBinding(TextBlock.TextProperty, new Binding(string.IsNullOrWhiteSpace(x.Attribute.BindTextTo) ? $"{x.MethodInfo.Name}Label" : x.Attribute.BindTextTo));
-
-                    var button = new Button { Content = textBlock };
-
-                    button.SetBinding(Button.CommandProperty, new Binding(string.IsNullOrWhiteSpace(x.Attribute.BindCommandTo) ? $"{x.MethodInfo.Name}Command" : x.Attribute.BindCommandTo));
-
+                    var button = new LabeledButton();
+                    button.SetBinding(ButtonBase.CommandProperty, new Binding(string.IsNullOrWhiteSpace(x.Attribute.BindCommandTo) ? $"{x.MethodInfo.Name}Command" : x.Attribute.BindCommandTo));
+                    button.SetBinding(LabeledButton.LabelProperty, new Binding(string.IsNullOrWhiteSpace(x.Attribute.BindTextTo) ? $"{x.MethodInfo.Name}Label" : x.Attribute.BindTextTo));
                     ButtonsPanel.Children.Add(button);
                     _generatedButtons.Add(button);
                 });

@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:controls="clr-namespace:BoboTech.EncyclopaediaMetallumViewer.Controls"
              mc:Ignorable="d"
              d:DesignHeight="95" d:DesignWidth="400">
     <StackPanel>
@@ -12,21 +13,15 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition/>
-                <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <TextBlock Text="Status:"/>
-            <TextBlock Grid.Column="1" Text="{Binding EMApiCallStatus}"/>
-            <TextBlock Grid.Column="2" Text="Code:"/>
-            <TextBlock Grid.Column="3" Text="{Binding EMApiCallCode}"/>
-            <TextBlock Grid.Row="1" Text="Message:"/>
-            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding EMApiCallMessage}"/>
-            <TextBlock Grid.Row="1" Grid.Column="2" Text="Hash:"/>
-            <TextBlock Grid.Row="1" Grid.Column="3" Text="{Binding EMApiCallHash}"/>
+            <controls:TextEdit Label="Status" Value="{Binding EMApiCallStatus}" IsReadOnly="True"/>
+            <controls:TextEdit Grid.Column="1" Label="Code" Value="{Binding EMApiCallCode}" IsReadOnly="True"/>
+            <controls:TextEdit Grid.Row="1" Label="Message" Value="{Binding EMApiCallMessage}" IsReadOnly="True"/>
+            <controls:TextEdit Grid.Row="1" Grid.Column="1" Label="Hash" Value="{Binding EMApiCallHash}" IsReadOnly="True"/>
         </Grid>
-        <TextBlock>
+        <TextBlock Margin="3">
             <Hyperlink Command="{Binding OpenEMApiDonationUrlCommand}">
                 <TextBlock Text="{Binding EMApiDonationMessage}" Margin="0"/>
             </Hyperlink>
